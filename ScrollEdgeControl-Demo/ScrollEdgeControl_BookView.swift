@@ -404,9 +404,7 @@ enum ScrollEdgeControl_BookView {
 
       let scrollEdgeControlForEnd = ScrollEdgeControl(
         edge: .bottom,
-        configuration: .init {
-          $0.layoutMode = .scrollingAlongContent
-        },
+        configuration: .init(),
         activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black)
       )
 
