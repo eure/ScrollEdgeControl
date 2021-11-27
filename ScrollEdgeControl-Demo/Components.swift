@@ -1,0 +1,85 @@
+@testable import ScrollEdgeControl
+import MondrianLayout
+import UIKit
+
+enum Components {
+
+  static func makeScrollViewDebuggingView(scrollView: UIScrollView) -> UIView {
+
+    let label = UILabel()
+    label.numberOfLines = 0
+    label.font = .systemFont(ofSize: 10)
+
+    let handler = {
+
+      label.text = """
+        adjustedContentInset: \(scrollView.adjustedContentInset)
+        contentInset: \(scrollView.contentInset)
+        contentOffset: \(scrollView.contentOffset)
+
+        local: \(scrollView._scrollEdgeControl_localContentInset)
+
+        actualContentInset: \(scrollView.__original_contentInset)
+        translation: \(scrollView.panGestureRecognizer.translation(in: nil).y)
+        """
+    }
+
+    let token1 = scrollView.observe(\.contentInset) { _, change in
+      handler()
+    }
+
+    let token2 = scrollView.observe(\.contentOffset) { _, change in
+      handler()
+    }
+
+    return MondrianLayout.AnyView.init { _ in
+      label
+        .viewBlock
+        .padding(4)
+    }
+    .setOnDeinit {
+      withExtendedLifetime([token1, token2], {})
+    }
+
+  }
+
+  static func makeDemoCell() -> UIView {
+    let view = UIView()
+
+    view.mondrian.layout
+      .height(.exact(80, .defaultLow))
+      .width(.exact(80, .defaultLow))
+      .activate()
+
+    view.backgroundColor = .systemYellow
+    view.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+    view.layer.borderWidth = 6
+    view.layer.cornerRadius = 12
+    if #available(iOS 13.0, *) {
+      view.layer.cornerCurve = .continuous
+    } else {
+      // Fallback on earlier versions
+    }
+
+    return MondrianLayout.AnyView.init { _ in
+      view
+        .viewBlock
+        .padding(4)
+    }
+  }
+
+  static func makeSelectionView(title: String, onTap: @escaping () -> Void) -> UIView {
+
+    let button = UIButton(type: .system)
+    button.setTitle(title, for: .normal)
+    button.onTap(onTap)
+
+    return MondrianLayout.AnyView.init { view in
+      VStackBlock {
+        button
+          .viewBlock
+          .padding(10)
+      }
+    }
+  }
+}

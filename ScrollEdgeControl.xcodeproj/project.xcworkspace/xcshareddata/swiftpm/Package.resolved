@@ -11,12 +11,30 @@
         }
       },
       {
+        "package": "MondrianLayout",
+        "repositoryURL": "https://github.com/muukii/MondrianLayout.git",
+        "state": {
+          "branch": "main",
+          "revision": "54643c169dc913ec8b9950bbd9277f1703b56fb8",
+          "version": null
+        }
+      },
+      {
         "package": "RxSwift",
         "repositoryURL": "git@github.com:ReactiveX/RxSwift.git",
         "state": {
           "branch": null,
           "revision": "7c17a6ccca06b5c107cfa4284e634562ddaf5951",
           "version": "6.2.0"
+        }
+      },
+      {
+        "package": "StackScrollView",
+        "repositoryURL": "git@github.com:muukii/StackScrollView.git",
+        "state": {
+          "branch": "master",
+          "revision": "9e513b3bdc1e1c7144c0e393bfab6785fcd1e857",
+          "version": null
         }
       },
       {

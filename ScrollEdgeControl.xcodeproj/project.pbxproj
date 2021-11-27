@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B39D04F2752740100D013F4 /* StackScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 4B39D04E2752740100D013F4 /* StackScrollView */; };
+		4B39D0512752745C00D013F4 /* DemoHorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D0502752745C00D013F4 /* DemoHorizontalViewController.swift */; };
+		4B39D0532752746600D013F4 /* DemoVerticalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D0522752746600D013F4 /* DemoVerticalViewController.swift */; };
+		4B39D05527528A1900D013F4 /* DebuggingRefreshIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D05427528A1900D013F4 /* DebuggingRefreshIndicatorView.swift */; };
+		4B39D05727528ACD00D013F4 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D05627528ACD00D013F4 /* Components.swift */; };
+		4B39D05927528B7800D013F4 /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D05827528B7800D013F4 /* UIControl+Closure.swift */; };
+		4B39D05C275295F600D013F4 /* RevealServer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B39D05A275295EE00D013F4 /* RevealServer.xcframework */; };
+		4B39D05D275295F600D013F4 /* RevealServer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B39D05A275295EE00D013F4 /* RevealServer.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B5E52D527515C830075AE52 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52D427515C830075AE52 /* Book.swift */; };
 		4B5E52D727515C900075AE52 /* BookContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52D627515C900075AE52 /* BookContainerViewController.swift */; };
 		4B5E52D827515CF20075AE52 /* ScrollEdgeControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC42825275157080047A850 /* ScrollEdgeControl.framework */; };
 		4B5E52D927515CF20075AE52 /* ScrollEdgeControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC42825275157080047A850 /* ScrollEdgeControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4B5E52DE27515D0F0075AE52 /* DemoAppMenuComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52DD27515D0F0075AE52 /* DemoAppMenuComponents.swift */; };
 		4B5E52E027515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */; };
 		4B5E52E227515DE40075AE52 /* DonutsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */; };
 		4B5E52E527515E0A0075AE52 /* MondrianLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5E52E427515E0A0075AE52 /* MondrianLayout */; };
@@ -27,7 +34,6 @@
 		4BC42850275158F80047A850 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC4284F275158F80047A850 /* RxCocoa */; };
 		4BC42852275158F80047A850 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42851275158F80047A850 /* RxRelay */; };
 		4BC42854275158F80047A850 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42853275158F80047A850 /* RxSwift */; };
-		F7EA74392640E089A86D9B76 /* Pods_ScrollEdgeControl_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241F21287CC0F53C3917FBFF /* Pods_ScrollEdgeControl_Demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4B5E52D927515CF20075AE52 /* ScrollEdgeControl.framework in Embed Frameworks */,
+				4B39D05D275295F600D013F4 /* RevealServer.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,10 +62,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		241F21287CC0F53C3917FBFF /* Pods_ScrollEdgeControl_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollEdgeControl_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B39D0502752745C00D013F4 /* DemoHorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoHorizontalViewController.swift; sourceTree = "<group>"; };
+		4B39D0522752746600D013F4 /* DemoVerticalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoVerticalViewController.swift; sourceTree = "<group>"; };
+		4B39D05427528A1900D013F4 /* DebuggingRefreshIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggingRefreshIndicatorView.swift; sourceTree = "<group>"; };
+		4B39D05627528ACD00D013F4 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		4B39D05827528B7800D013F4 /* UIControl+Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Closure.swift"; sourceTree = "<group>"; };
+		4B39D05A275295EE00D013F4 /* RevealServer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = RevealServer.xcframework; sourceTree = "<group>"; };
 		4B5E52D427515C830075AE52 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		4B5E52D627515C900075AE52 /* BookContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerViewController.swift; sourceTree = "<group>"; };
-		4B5E52DD27515D0F0075AE52 /* DemoAppMenuComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppMenuComponents.swift; sourceTree = "<group>"; };
 		4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEdgeActivityIndicatorView.swift; sourceTree = "<group>"; };
 		4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutsIndicatorView.swift; sourceTree = "<group>"; };
 		4BC42825275157080047A850 /* ScrollEdgeControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScrollEdgeControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,8 +80,6 @@
 		4BC42846275158250047A850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BC42848275158250047A850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC4284C2751585F0047A850 /* ScrollEdgeControl_BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEdgeControl_BookView.swift; sourceTree = "<group>"; };
-		76062D0D00FD2727D4EA498C /* Pods-ScrollEdgeControl-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollEdgeControl-Demo.release.xcconfig"; path = "Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo.release.xcconfig"; sourceTree = "<group>"; };
-		ECAD3472122537602E10DD7D /* Pods-ScrollEdgeControl-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollEdgeControl-Demo.debug.xcconfig"; path = "Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,37 +96,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B66216227515B1900509356 /* StorybookKit in Frameworks */,
+				4B39D05C275295F600D013F4 /* RevealServer.xcframework in Frameworks */,
 				4BC42854275158F80047A850 /* RxSwift in Frameworks */,
 				4B66215F27515AD100509356 /* TypedTextAttributes in Frameworks */,
 				4BC42852275158F80047A850 /* RxRelay in Frameworks */,
 				4B5E52D827515CF20075AE52 /* ScrollEdgeControl.framework in Frameworks */,
+				4B39D04F2752740100D013F4 /* StackScrollView in Frameworks */,
 				4BC42850275158F80047A850 /* RxCocoa in Frameworks */,
 				4B5E52E527515E0A0075AE52 /* MondrianLayout in Frameworks */,
 				4B66216427515B1900509356 /* StorybookUI in Frameworks */,
-				F7EA74392640E089A86D9B76 /* Pods_ScrollEdgeControl_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		331A8F3FF4141A381043299C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ECAD3472122537602E10DD7D /* Pods-ScrollEdgeControl-Demo.debug.xcconfig */,
-				76062D0D00FD2727D4EA498C /* Pods-ScrollEdgeControl-Demo.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		4BC4281B275157080047A850 = {
 			isa = PBXGroup;
 			children = (
+				4B39D05A275295EE00D013F4 /* RevealServer.xcframework */,
 				4BC42827275157080047A850 /* ScrollEdgeControl */,
 				4BC42839275158240047A850 /* ScrollEdgeControl-Demo */,
 				4BC42826275157080047A850 /* Products */,
-				331A8F3FF4141A381043299C /* Pods */,
-				64F204A6D52ED77ADFD1B18E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,24 +143,20 @@
 			children = (
 				4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */,
 				4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */,
-				4B5E52DD27515D0F0075AE52 /* DemoAppMenuComponents.swift */,
 				4BC4284C2751585F0047A850 /* ScrollEdgeControl_BookView.swift */,
+				4B39D05427528A1900D013F4 /* DebuggingRefreshIndicatorView.swift */,
+				4B39D0502752745C00D013F4 /* DemoHorizontalViewController.swift */,
+				4B39D0522752746600D013F4 /* DemoVerticalViewController.swift */,
 				4BC4283A275158240047A850 /* AppDelegate.swift */,
 				4B5E52D427515C830075AE52 /* Book.swift */,
 				4B5E52D627515C900075AE52 /* BookContainerViewController.swift */,
 				4BC42843275158250047A850 /* Assets.xcassets */,
 				4BC42845275158250047A850 /* LaunchScreen.storyboard */,
 				4BC42848275158250047A850 /* Info.plist */,
+				4B39D05627528ACD00D013F4 /* Components.swift */,
+				4B39D05827528B7800D013F4 /* UIControl+Closure.swift */,
 			);
 			path = "ScrollEdgeControl-Demo";
-			sourceTree = "<group>";
-		};
-		64F204A6D52ED77ADFD1B18E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				241F21287CC0F53C3917FBFF /* Pods_ScrollEdgeControl_Demo.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,11 +197,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BC42849275158250047A850 /* Build configuration list for PBXNativeTarget "ScrollEdgeControl-Demo" */;
 			buildPhases = (
-				CF9D12C53776ED9A81DDD549 /* [CP] Check Pods Manifest.lock */,
 				4BC42834275158240047A850 /* Sources */,
 				4BC42835275158240047A850 /* Frameworks */,
 				4BC42836275158240047A850 /* Resources */,
-				A0608B646DA957D39F7A0C59 /* [CP] Embed Pods Frameworks */,
 				4B5E52DC27515CF20075AE52 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -222,6 +216,7 @@
 				4B66216127515B1900509356 /* StorybookKit */,
 				4B66216327515B1900509356 /* StorybookUI */,
 				4B5E52E427515E0A0075AE52 /* MondrianLayout */,
+				4B39D04E2752740100D013F4 /* StackScrollView */,
 			);
 			productName = "ScrollEdgeControl-Demo";
 			productReference = 4BC42838275158240047A850 /* ScrollEdgeControl-Demo.app */;
@@ -260,6 +255,7 @@
 				4B66215D27515AD100509356 /* XCRemoteSwiftPackageReference "TypedTextAttributes" */,
 				4B66216027515B1800509356 /* XCRemoteSwiftPackageReference "Storybook-ios" */,
 				4B5E52E327515E0A0075AE52 /* XCRemoteSwiftPackageReference "MondrianLayout" */,
+				4B39D04D2752740000D013F4 /* XCRemoteSwiftPackageReference "StackScrollView" */,
 			);
 			productRefGroup = 4BC42826275157080047A850 /* Products */;
 			projectDirPath = "";
@@ -290,48 +286,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		A0608B646DA957D39F7A0C59 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF9D12C53776ED9A81DDD549 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ScrollEdgeControl-Demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		4BC42821275157080047A850 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -346,12 +300,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BC4283B275158240047A850 /* AppDelegate.swift in Sources */,
+				4B39D05927528B7800D013F4 /* UIControl+Closure.swift in Sources */,
 				4B5E52E027515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift in Sources */,
 				4BC4284D2751585F0047A850 /* ScrollEdgeControl_BookView.swift in Sources */,
 				4B5E52D727515C900075AE52 /* BookContainerViewController.swift in Sources */,
 				4B5E52D527515C830075AE52 /* Book.swift in Sources */,
 				4B5E52E227515DE40075AE52 /* DonutsIndicatorView.swift in Sources */,
-				4B5E52DE27515D0F0075AE52 /* DemoAppMenuComponents.swift in Sources */,
+				4B39D0532752746600D013F4 /* DemoVerticalViewController.swift in Sources */,
+				4B39D05727528ACD00D013F4 /* Components.swift in Sources */,
+				4B39D0512752745C00D013F4 /* DemoHorizontalViewController.swift in Sources */,
+				4B39D05527528A1900D013F4 /* DebuggingRefreshIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,7 +513,6 @@
 		};
 		4BC4284A275158250047A850 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECAD3472122537602E10DD7D /* Pods-ScrollEdgeControl-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -583,7 +540,6 @@
 		};
 		4BC4284B275158250047A850 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76062D0D00FD2727D4EA498C /* Pods-ScrollEdgeControl-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -642,12 +598,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4B39D04D2752740000D013F4 /* XCRemoteSwiftPackageReference "StackScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:muukii/StackScrollView.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4B5E52E327515E0A0075AE52 /* XCRemoteSwiftPackageReference "MondrianLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/muukii/MondrianLayout.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.11;
+				branch = main;
+				kind = branch;
 			};
 		};
 		4B66215D27515AD100509356 /* XCRemoteSwiftPackageReference "TypedTextAttributes" */ = {
@@ -685,6 +649,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4B39D04E2752740100D013F4 /* StackScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B39D04D2752740000D013F4 /* XCRemoteSwiftPackageReference "StackScrollView" */;
+			productName = StackScrollView;
+		};
 		4B5E52E427515E0A0075AE52 /* MondrianLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4B5E52E327515E0A0075AE52 /* XCRemoteSwiftPackageReference "MondrianLayout" */;
