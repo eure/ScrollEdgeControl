@@ -39,6 +39,8 @@ pod "ScrollEdgeControl/Core"
 
 ## How to use
 
+**Setting up**
+
 ```swift
 let scrollEdgeControl = ScrollEdgeControl(
   edge: .top, // ✅ a target edge to add this control
@@ -51,6 +53,18 @@ let scrollEdgeControl = ScrollEdgeControl(
 let scrollableView: UIScrollView // ✅ could be `UIScrollView`, `UITableView`, `UICollectionView`
 
 scrollableView.addSubview(scrollEdgeControl) // ✅ Could add multiple controls for each edge
+```
+
+**Handling**
+
+```swift
+scrollEdgeControl.handlers.onDidActivate = { instance in
+
+  ...
+
+  // after activity completed
+  instance.setActivityState(.inactive, animated: true)
+}
 ```
 
 **SwiftPM**
