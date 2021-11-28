@@ -4,7 +4,12 @@ Replacement of UIRefreshControl, and more functions.
 
 ## Overview
 
+ScrollEdgeControl is a UI component that is similar to UIRefreshControl. but it pulls up to the even further abstracted component.
 
+ScrollEdgeControl can attach to every edge in a scroll view. 
+For instance, pulling to down, up, left, right to trigger something activity such as refreshing. (pull-to-activate)
+
+It supports also disabling pull-to-activate, it would be useful in case of displaying as a loading indicator at bottom of the list.
 
 ## Showcase
 
@@ -37,6 +42,14 @@ If you need only core component
 pod "ScrollEdgeControl/Core"
 ```
 
+**SwiftPM**
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/muukii/ScrollEdgeControl.git", exact: "<VERSION>")
+]
+```
+
 ## How to use
 
 **Setting up**
@@ -67,13 +80,9 @@ scrollEdgeControl.handlers.onDidActivate = { instance in
 }
 ```
 
-**SwiftPM**
+## Behind the scenes
 
-```swift
-dependencies: [
-    .package(url: "https://github.com/muukii/ScrollEdgeControl.git", exact: "<VERSION>")
-]
-```
+WIP
 
 ## Author
 
