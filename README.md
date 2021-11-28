@@ -84,6 +84,20 @@ scrollEdgeControl.handlers.onDidActivate = { instance in
 
 WIP
 
+## Why uses Advance in dependency
+
+Advance helps animation in the scroll view.
+
+It is a library to run animations with fully computable values using CADisplayLink.
+
+UIScrollView's animations are not in CoreAnimation.  
+Those are computed in CPU every frame. that's why we can handle it in the UIScrollView delegate.  
+We can update content offset with UIView animation, but sometimes it's going to be weird animation.  
+To solve it, using CADisplayLink, update values for each frame.
+
+Refs:  
+- https://medium.com/@esskeetit/how-uiscrollview-works-e418adc47060#97c7
+
 ## Author
 
 - [Matto](https://github.com/takumatt)
