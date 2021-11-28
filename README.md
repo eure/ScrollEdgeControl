@@ -37,6 +37,22 @@ If you need only core component
 pod "ScrollEdgeControl/Core"
 ```
 
+## How to use
+
+```swift
+let scrollEdgeControl = ScrollEdgeControl(
+  edge: .top, // ✅ a target edge to add this control
+  configuration: .init(),  // ✅ customizing behavior of this control
+  activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black) // ✅ Adding your own component to display on this control
+)
+```
+
+```swift
+let scrollableView: UIScrollView // ✅ could be `UIScrollView`, `UITableView`, `UICollectionView`
+
+scrollableView.addSubview(scrollEdgeControl) // ✅ Could add multiple controls for each edge
+```
+
 **SwiftPM**
 
 ```swift
