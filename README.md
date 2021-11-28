@@ -1,6 +1,8 @@
 # ScrollEdgeControl
 Yet another UIRefreshControl
 
+## Showcase
+
 **Vertical**
 | Top | Bottom |
 |---|---|
