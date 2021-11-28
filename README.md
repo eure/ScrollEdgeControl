@@ -17,7 +17,11 @@ pod "ScrollEdgeControl/Core"
 
 **SwiftPM**
 
-
+```swift
+dependencies: [
+    .package(url: "https://github.com/muukii/ScrollEdgeControl.git", exact: "<VERSION>")
+]
+```
 
 ## Author
 
