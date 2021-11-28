@@ -8,6 +8,7 @@ import ScrollEdgeControl
 final class DemoVerticalViewController: UIViewController {
 
   struct Configuration {
+    var numberOfElements: Int = 5
     var startSideConfiguration: ScrollEdgeControl.Configuration?
     var endSideConfiguration: ScrollEdgeControl.Configuration?
   }
@@ -107,13 +108,11 @@ final class DemoVerticalViewController: UIViewController {
         })
     ])
 
+    let cells = (0..<(configuration.numberOfElements)).map { _ in
+      Components.makeDemoCell()
+    }
 
-    scrollView.append(views: [
-      Components.makeDemoCell(),
-      Components.makeDemoCell(),
-      Components.makeDemoCell(),
-      Components.makeDemoCell(),
-    ])
+    scrollView.append(views: cells)
 
   }
 

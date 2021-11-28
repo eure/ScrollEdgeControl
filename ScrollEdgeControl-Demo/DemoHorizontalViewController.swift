@@ -8,6 +8,7 @@ import UIKit
 final class DemoHorizontalViewController: UIViewController {
 
   struct Configuration {
+    var numberOfElements: Int = 5
     var startSideConfiguration: ScrollEdgeControl.Configuration?
     var endSideConfiguration: ScrollEdgeControl.Configuration?
   }
@@ -24,6 +25,9 @@ final class DemoHorizontalViewController: UIViewController {
     }()
   )
 
+  let startScrollEdgeControl: ScrollEdgeControl?
+  let endScrollEdgeControl: ScrollEdgeControl?
+
   private let menuView = StackScrollView()
   private let configuration: Configuration
 
@@ -31,6 +35,19 @@ final class DemoHorizontalViewController: UIViewController {
     configuration: Configuration
   ) {
     self.configuration = configuration
+
+    if let configuration = configuration.startSideConfiguration {
+      self.startScrollEdgeControl = ScrollEdgeControl(edge: .left, configuration: configuration, activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black))
+    } else {
+      self.startScrollEdgeControl = nil
+    }
+
+    if let configuration = configuration.endSideConfiguration {
+      self.endScrollEdgeControl = ScrollEdgeControl(edge: .right, configuration: configuration, activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black))
+    } else {
+      self.endScrollEdgeControl = nil
+    }
+
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -62,12 +79,7 @@ final class DemoHorizontalViewController: UIViewController {
       Components.makeScrollViewDebuggingView(scrollView: scrollView)
     ])
 
-    if let configuration = configuration.startSideConfiguration {
-      let control = ScrollEdgeControl(
-        edge: .left,
-        configuration: configuration,
-        activityIndicatorView: DebuggingRefreshIndicatorView()
-      )
+    if let control = startScrollEdgeControl {
       scrollView.addSubview(control)
 
       menuView.append(views: [
@@ -86,12 +98,7 @@ final class DemoHorizontalViewController: UIViewController {
       ])
     }
 
-    if let configuration = configuration.endSideConfiguration {
-      let control = ScrollEdgeControl(
-        edge: .right,
-        configuration: configuration,
-        activityIndicatorView: DebuggingRefreshIndicatorView()
-      )
+    if let control = endScrollEdgeControl {
       scrollView.addSubview(control)
 
       menuView.append(views: [
@@ -131,14 +138,11 @@ final class DemoHorizontalViewController: UIViewController {
       ),
     ])
 
-    scrollView.append(views: [
-      Components.makeDemoCell(),
-      Components.makeDemoCell(),
-      Components.makeDemoCell(),
-      Components.makeDemoCell(),
-      Components.makeDemoCell(),
-      Components.makeDemoCell(),
-    ])
+    let cells = (0..<(configuration.numberOfElements)).map { _ in
+      Components.makeDemoCell()
+    }
+
+    scrollView.append(views: cells)
 
   }
 }
