@@ -1,5 +1,10 @@
 # ScrollEdgeControl
-Yet another UIRefreshControl
+
+Replacement of UIRefreshControl, and more functions.
+
+## Overview
+
+
 
 ## Showcase
 
