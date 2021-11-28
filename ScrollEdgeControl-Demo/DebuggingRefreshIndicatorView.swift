@@ -32,14 +32,14 @@ public final class DebuggingRefreshIndicatorView: UIView, ScrollEdgeActivityIndi
     fatalError()
   }
 
-  public func update(withState state: ScrollEdgeControl.RefreshingState) {
+  public func update(withState state: ScrollEdgeControl.ActivatingState) {
 
     switch state {
     case .triggering(let progress):
       label.text = "triggering \(progress)"
-    case .refreshing:
+    case .active:
       label.text = "refreshing"
-    case .completedRefreshing:
+    case .completed:
       label.text = "completed"
     }
   }

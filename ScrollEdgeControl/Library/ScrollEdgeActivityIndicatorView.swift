@@ -1,6 +1,4 @@
 import Foundation
-import MondrianLayout
-import ScrollEdgeControl
 import UIKit
 
 public final class ScrollEdgeActivityIndicatorView: UIView,
@@ -24,6 +22,7 @@ public final class ScrollEdgeActivityIndicatorView: UIView,
 
   }
 
+  @available(*, unavailable)
   public required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -32,6 +31,7 @@ public final class ScrollEdgeActivityIndicatorView: UIView,
     super.layoutSubviews()
 
     /**
+     [Workaround for using Texture]
      It should be laid out manually since the ASCollectionNode won't display cells initially in a horizontal scroll by using AutoLayout in the ASCollectionView.
      */
     fractionIndicator.center = bounds.center
@@ -46,7 +46,7 @@ public final class ScrollEdgeActivityIndicatorView: UIView,
     donutsIndicator.setColor(color)
   }
 
-  public func update(withState state: ScrollEdgeControl.RefreshingState) {
+  public func update(withState state: ScrollEdgeControl.ActivatingState) {
 
     switch state {
     case .triggering(let progress):
@@ -71,7 +71,7 @@ public final class ScrollEdgeActivityIndicatorView: UIView,
         }
       }
 
-    case .refreshing:
+    case .active:
 
       donutsIndicator.alpha = 1
       donutsIndicator.startAnimating()
@@ -83,7 +83,7 @@ public final class ScrollEdgeActivityIndicatorView: UIView,
 
       layer.add(t, forKey: "fade")
 
-    case .completedRefreshing:
+    case .completed:
       
       donutsIndicator.stopAnimating()
       fractionIndicator.setProgress(0)

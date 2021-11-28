@@ -1,10 +1,3 @@
-//
-//  DemoVerticalViewController.swift
-//  ScrollEdgeControl-Demo
-//
-//  Created by Muukii on 2021/11/27.
-//
-
 import Foundation
 import UIKit
 import MondrianLayout
@@ -15,17 +8,35 @@ import ScrollEdgeControl
 final class DemoVerticalViewController: UIViewController {
 
   struct Configuration {
-    var topConfiguration: ScrollEdgeControl.Configuration?
-    var bottomConfiguration: ScrollEdgeControl.Configuration?
+    var startSideConfiguration: ScrollEdgeControl.Configuration?
+    var endSideConfiguration: ScrollEdgeControl.Configuration?
   }
+
+  let startScrollEdgeControl: ScrollEdgeControl?
+  let endScrollEdgeControl: ScrollEdgeControl?
 
   private let scrollView = StackScrollView()
   private let menuView = StackScrollView()
   private let configuration: Configuration
 
   init(configuration: Configuration) {
+
     self.configuration = configuration
+
+    if let configuration = configuration.startSideConfiguration {
+      self.startScrollEdgeControl = ScrollEdgeControl(edge: .top, configuration: configuration, activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black))
+    } else {
+      self.startScrollEdgeControl = nil
+    }
+
+    if let configuration = configuration.endSideConfiguration {
+      self.endScrollEdgeControl = ScrollEdgeControl(edge: .bottom, configuration: configuration, activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black))
+    } else {
+      self.endScrollEdgeControl = nil
+    }
+
     super.init(nibName: nil, bundle: nil)
+
   }
   
   required init?(coder: NSCoder) {
@@ -34,6 +45,7 @@ final class DemoVerticalViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    let scrollView = self.scrollView
 
     view.backgroundColor = .white
 
@@ -50,8 +62,7 @@ final class DemoVerticalViewController: UIViewController {
       Components.makeScrollViewDebuggingView(scrollView: scrollView)
     ])
 
-    if let configuration = configuration.topConfiguration {
-      let control = ScrollEdgeControl(edge: .top, configuration: configuration, activityIndicatorView: DebuggingRefreshIndicatorView())
+    if let control = startScrollEdgeControl {
       scrollView.addSubview(control)
 
       menuView.append(views: [
@@ -64,8 +75,7 @@ final class DemoVerticalViewController: UIViewController {
       ])
     }
 
-    if let configuration = configuration.bottomConfiguration {
-      let control = ScrollEdgeControl(edge: .bottom, configuration: configuration, activityIndicatorView: DebuggingRefreshIndicatorView())
+    if let control = endScrollEdgeControl {
       scrollView.addSubview(control)
 
       menuView.append(views: [
@@ -78,15 +88,31 @@ final class DemoVerticalViewController: UIViewController {
       ])
     }
 
+    menuView.append(views: [
+      Components.makeStepperView(
+        title: "Inset top",
+        onIncreased: {
+          scrollView.contentInset.top += 20
+        },
+        onDecreased: {
+          scrollView.contentInset.top -= 20
+        }),
+      Components.makeStepperView(
+        title: "Inset bottom",
+        onIncreased: {
+          scrollView.contentInset.bottom += 20
+        },
+        onDecreased: {
+          scrollView.contentInset.bottom -= 20
+        })
+    ])
+
 
     scrollView.append(views: [
       Components.makeDemoCell(),
       Components.makeDemoCell(),
       Components.makeDemoCell(),
       Components.makeDemoCell(),
-//      Components.makeSelectionView(title: "Hello", onTap: {
-//
-//      })
     ])
 
   }

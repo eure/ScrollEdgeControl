@@ -51,7 +51,7 @@ enum Components {
       .width(.exact(80, .defaultLow))
       .activate()
 
-    view.backgroundColor = .systemYellow
+    view.backgroundColor = .init(white: 0.9, alpha: 1)
     view.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
     view.layer.borderWidth = 6
     view.layer.cornerRadius = 12
@@ -80,6 +80,38 @@ enum Components {
           .viewBlock
           .padding(10)
       }
+    }
+  }
+
+  static func makeStepperView(
+    title: String,
+    onIncreased: @escaping () -> Void,
+    onDecreased: @escaping () -> Void
+  ) -> UIView {
+
+    let titleLabel = UILabel()
+    titleLabel.text = title
+
+    let increaseButton = UIButton(type: .system)
+    increaseButton.setTitle("+", for: .normal)
+    increaseButton.onTap(onIncreased)
+
+    let decreaseButton = UIButton(type: .system)
+    decreaseButton.setTitle("-", for: .normal)
+    decreaseButton.onTap(onDecreased)
+
+    return MondrianLayout.AnyView.init { view in
+      VStackBlock {
+        titleLabel
+        HStackBlock(spacing: 4) {
+          increaseButton
+            .viewBlock
+
+          decreaseButton
+            .viewBlock
+        }
+      }
+      .padding(10)
     }
   }
 }

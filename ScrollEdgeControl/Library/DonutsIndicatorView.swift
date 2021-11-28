@@ -311,48 +311,13 @@ public final class DonutsIndicatorFractionView: UIView {
 
 }
 
-
-#if canImport(TextureSwiftSupport)
-import TextureSwiftSupport
-
-/// A node that shows that a task is in progress.
-public final class DonutsIndicatorNode: ViewNode<DonutsIndicatorView> {
-
-  public init(
-    size: DonutsIndicatorView.Size,
-    color: DonutsIndicatorView.Color = .black
-  ) {
-    super.init {
-      let s = DonutsIndicatorView(size: size, color: color)
-      return s
-    }
-    backgroundColor = .clear
-    style.preferredSize = size.intrinsicContentSize
-  }
-
-  public func startAnimating() {
-    ASPerformBlockOnMainThread {
-      self.wrappedView.startAnimating()
-    }
-  }
-
-  public func stopAnimating() {
-    ASPerformBlockOnMainThread {
-      self.wrappedView.stopAnimating()
-    }
-  }
-
-}
-
-#endif
-
 extension CASpringAnimation {
 
   /**
    Creates an instance from damping and response.
    the response calucation comes from https://medium.com/@nathangitter/building-fluid-interfaces-ios-swift-9732bb934bf5
    */
-  public convenience init(
+  fileprivate convenience init(
     keyPath path: String?,
     damping: CGFloat,
     response: CGFloat,

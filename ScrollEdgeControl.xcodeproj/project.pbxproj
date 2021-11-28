@@ -15,12 +15,12 @@
 		4B39D05927528B7800D013F4 /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D05827528B7800D013F4 /* UIControl+Closure.swift */; };
 		4B39D05C275295F600D013F4 /* RevealServer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B39D05A275295EE00D013F4 /* RevealServer.xcframework */; };
 		4B39D05D275295F600D013F4 /* RevealServer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B39D05A275295EE00D013F4 /* RevealServer.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4B39D05E2753942F00D013F4 /* DonutsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */; };
+		4B39D05F2753948300D013F4 /* ScrollEdgeActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */; };
 		4B5E52D527515C830075AE52 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52D427515C830075AE52 /* Book.swift */; };
 		4B5E52D727515C900075AE52 /* BookContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52D627515C900075AE52 /* BookContainerViewController.swift */; };
 		4B5E52D827515CF20075AE52 /* ScrollEdgeControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC42825275157080047A850 /* ScrollEdgeControl.framework */; };
 		4B5E52D927515CF20075AE52 /* ScrollEdgeControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC42825275157080047A850 /* ScrollEdgeControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4B5E52E027515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */; };
-		4B5E52E227515DE40075AE52 /* DonutsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */; };
 		4B5E52E527515E0A0075AE52 /* MondrianLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5E52E427515E0A0075AE52 /* MondrianLayout */; };
 		4B66215F27515AD100509356 /* TypedTextAttributes in Frameworks */ = {isa = PBXBuildFile; productRef = 4B66215E27515AD100509356 /* TypedTextAttributes */; };
 		4B66216227515B1900509356 /* StorybookKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B66216127515B1900509356 /* StorybookKit */; };
@@ -30,7 +30,6 @@
 		4BC4283B275158240047A850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4283A275158240047A850 /* AppDelegate.swift */; };
 		4BC42844275158250047A850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BC42843275158250047A850 /* Assets.xcassets */; };
 		4BC42847275158250047A850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BC42845275158250047A850 /* LaunchScreen.storyboard */; };
-		4BC4284D2751585F0047A850 /* ScrollEdgeControl_BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4284C2751585F0047A850 /* ScrollEdgeControl_BookView.swift */; };
 		4BC42850275158F80047A850 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC4284F275158F80047A850 /* RxCocoa */; };
 		4BC42852275158F80047A850 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42851275158F80047A850 /* RxRelay */; };
 		4BC42854275158F80047A850 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42853275158F80047A850 /* RxSwift */; };
@@ -79,7 +78,6 @@
 		4BC42843275158250047A850 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BC42846275158250047A850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BC42848275158250047A850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4BC4284C2751585F0047A850 /* ScrollEdgeControl_BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEdgeControl_BookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +109,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B39D0602753948D00D013F4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4BC4282F275157320047A850 /* ScrollEdgeControl.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4B39D0612753949200D013F4 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */,
+				4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		4BC4281B275157080047A850 = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +148,8 @@
 		4BC42827275157080047A850 /* ScrollEdgeControl */ = {
 			isa = PBXGroup;
 			children = (
-				4BC4282F275157320047A850 /* ScrollEdgeControl.swift */,
+				4B39D0602753948D00D013F4 /* Core */,
+				4B39D0612753949200D013F4 /* Library */,
 			);
 			path = ScrollEdgeControl;
 			sourceTree = "<group>";
@@ -141,9 +157,6 @@
 		4BC42839275158240047A850 /* ScrollEdgeControl-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */,
-				4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */,
-				4BC4284C2751585F0047A850 /* ScrollEdgeControl_BookView.swift */,
 				4B39D05427528A1900D013F4 /* DebuggingRefreshIndicatorView.swift */,
 				4B39D0502752745C00D013F4 /* DemoHorizontalViewController.swift */,
 				4B39D0522752746600D013F4 /* DemoVerticalViewController.swift */,
@@ -292,6 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BC42830275157320047A850 /* ScrollEdgeControl.swift in Sources */,
+				4B39D05F2753948300D013F4 /* ScrollEdgeActivityIndicatorView.swift in Sources */,
+				4B39D05E2753942F00D013F4 /* DonutsIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,11 +316,8 @@
 			files = (
 				4BC4283B275158240047A850 /* AppDelegate.swift in Sources */,
 				4B39D05927528B7800D013F4 /* UIControl+Closure.swift in Sources */,
-				4B5E52E027515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift in Sources */,
-				4BC4284D2751585F0047A850 /* ScrollEdgeControl_BookView.swift in Sources */,
 				4B5E52D727515C900075AE52 /* BookContainerViewController.swift in Sources */,
 				4B5E52D527515C830075AE52 /* Book.swift in Sources */,
-				4B5E52E227515DE40075AE52 /* DonutsIndicatorView.swift in Sources */,
 				4B39D0532752746600D013F4 /* DemoVerticalViewController.swift in Sources */,
 				4B39D05727528ACD00D013F4 /* Components.swift in Sources */,
 				4B39D0512752745C00D013F4 /* DemoHorizontalViewController.swift in Sources */,

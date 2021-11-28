@@ -1,44 +1,41 @@
-//
 
 import Advance
 import UIKit
 import os.log
 
+/// A protocol that indicates the view can be displayed on ScrollEdgeControl.
 public protocol ScrollEdgeActivityIndicatorViewType: UIView {
 
-  func update(withState state: ScrollEdgeControl.RefreshingState)
+  func update(withState state: ScrollEdgeControl.ActivatingState)
 }
 
-/// Yet another UIRefreshControl for UIScrollView.
-/// - pulling to refresh
-/// - displaying information on the edge
-@MainActor
+/// A customizable control that attaches at edges of the scrollview.
+///
+/// - Pulling to refresh (interchangeable with UIRefreshControl)
+/// - Can be attached in multiple edges (top, left, right, bottom)
 public final class ScrollEdgeControl: UIControl {
-
-  enum Log {
-
-    private static let log: OSLog = {
-      #if RELEASE
-      return .disabled
-      #else
-      return OSLog.init(subsystem: "ScrollEdgeControl", category: "ScrollEdgeControl")
-      #endif
-    }()
-
-    static func debug(_ object: Any...) {
-      os_log(.debug, log: log, "%@", object.map { "\($0)" }.joined(separator: " "))
-    }
-
-  }
 
   public struct Handlers {
     public var onDidBeginRefreshing: (ScrollEdgeControl) -> Void = { _ in }
   }
 
+  /**
+   Configurations for ScrollEdgeControl
+   */
   public struct Configuration {
 
+    /**
+     Options how lays out ScrollEdgeControl in ScrollView
+     */
     public enum LayoutMode {
+      /**
+       Fixes the position to the specified edge with respecting content-inset.
+       */
       case fixesToEdge
+
+      /**
+       Scrolls itself according to the content
+       */
       case scrollingAlongContent
     }
 
@@ -65,7 +62,9 @@ public final class ScrollEdgeControl: UIControl {
 
     public init() {}
 
-    public init(_ modify: (inout Self) -> Void) {
+    public init(
+      _ modify: (inout Self) -> Void
+    ) {
       var instance = Self.init()
       modify(&instance)
       self = instance
@@ -73,20 +72,15 @@ public final class ScrollEdgeControl: UIControl {
 
   }
 
-  public enum RefreshingState: Equatable {
+  public enum ActivatingState: Equatable {
     case triggering(progress: CGFloat)
-    case refreshing
-    case completedRefreshing
+    case active
+    case completed
   }
 
-  private enum Constants {
-
-    static let refreshIndicatorLengthAlongScrollDirection: CGFloat = 50
-    static let rubberBandingLengthToTriggerRefreshing: CGFloat =
-      refreshIndicatorLengthAlongScrollDirection * 1.6
-    static let refreshAnimationAutoScrollMargin: CGFloat = 10
-  }
-
+  /**
+   A representation of the edge
+   */
   public enum Edge: Equatable {
     case top
     case bottom
@@ -106,7 +100,7 @@ public final class ScrollEdgeControl: UIControl {
     }
   }
 
-  enum DirectionalEdge {
+  private enum DirectionalEdge {
     case start
     case end
   }
@@ -125,7 +119,10 @@ public final class ScrollEdgeControl: UIControl {
      */
     public var addsInset: Bool
 
-    public init(isActive: Bool, addsInset: Bool) {
+    public init(
+      isActive: Bool,
+      addsInset: Bool
+    ) {
       self.isActive = isActive
       self.addsInset = addsInset
     }
@@ -146,6 +143,30 @@ public final class ScrollEdgeControl: UIControl {
       return .init(isActive: false, addsInset: addsInset)
     }
 
+  }
+
+  fileprivate enum Log {
+
+    private static let log: OSLog = {
+      #if RELEASE
+      return .disabled
+      #else
+      return OSLog.init(subsystem: "ScrollEdgeControl", category: "ScrollEdgeControl")
+      #endif
+    }()
+
+    static func debug(_ object: Any...) {
+      os_log(.debug, log: log, "%@", object.map { "\($0)" }.joined(separator: " "))
+    }
+
+  }
+
+  private enum Constants {
+
+    static let refreshIndicatorLengthAlongScrollDirection: CGFloat = 50
+    static let rubberBandingLengthToTriggerRefreshing: CGFloat =
+      refreshIndicatorLengthAlongScrollDirection * 1.6
+    static let refreshAnimationAutoScrollMargin: CGFloat = 10
   }
 
   public var handlers: Handlers = .init()
@@ -172,12 +193,11 @@ public final class ScrollEdgeControl: UIControl {
   private let feedbackGenerator: UIImpactFeedbackGenerator = .init(style: .light)
   private var scrollController: ScrollController?
 
-  private var refreshingState: RefreshingState = .completedRefreshing {
+  private var refreshingState: ActivatingState = .completed {
     didSet {
       activityIndicatorView?.update(withState: refreshingState)
     }
   }
-
 
   public init(
     edge: Edge,
@@ -189,7 +209,7 @@ public final class ScrollEdgeControl: UIControl {
     self.configuration = configuration
 
     super.init(frame: .zero)
-    
+
     isUserInteractionEnabled = false
 
     setActivityIndicatorView(activityIndicatorView)
@@ -206,26 +226,31 @@ public final class ScrollEdgeControl: UIControl {
 
   }
 
+  /**
+   Sets Activity State - animatable
+   */
   public func setActivityState(_ state: ActivityState, animated: Bool) {
+
+    let previous = componentState.activityState
+    componentState.activityState = state
+
     switch state.isActive {
     case true:
 
-      guard !componentState.activityState.isActive else {
+      guard !previous.isActive else {
         break
       }
 
-      componentState.activityState.isActive = true
-      refreshingState = .refreshing
+      refreshingState = .active
 
     case false:
 
-      guard componentState.activityState.isActive == true else {
+      guard previous.isActive == true else {
         break
       }
 
-      componentState.activityState.isActive = false
-      refreshingState = .completedRefreshing
-      
+      refreshingState = .completed
+
     }
 
     switch state.addsInset {
@@ -235,6 +260,7 @@ public final class ScrollEdgeControl: UIControl {
       removeLocalContentInsetInTargetScrollView(animated: animated)
     }
   }
+
 
   public func setActivityIndicatorView(_ view: ScrollEdgeActivityIndicatorViewType) {
 
@@ -293,6 +319,8 @@ public final class ScrollEdgeControl: UIControl {
     addInsetObservation(scrollView: scrollView)
 
     layoutSelfInScrollView()
+
+    setActivityState(componentState.activityState, animated: false)
   }
 
   private func addLocalContentInsetInTargetScrollView(animated: Bool) {
@@ -311,7 +339,9 @@ public final class ScrollEdgeControl: UIControl {
 
     if animated {
 
-      contentInsetDynamicAnimator = Animator(initialValue: scrollView._scrollEdgeControl_localContentInset[edge: self.targetEdge])
+      contentInsetDynamicAnimator = Animator(
+        initialValue: scrollView._scrollEdgeControl_localContentInset[edge: self.targetEdge]
+      )
 
       contentInsetDynamicAnimator!.onChange = { [weak self, weak scrollView] value in
 
@@ -321,7 +351,7 @@ public final class ScrollEdgeControl: UIControl {
         else {
           return
         }
-        
+
         let userContentInset = scrollView._userContentInset
 
         /// reads every frame to support multiple components.
@@ -356,9 +386,10 @@ public final class ScrollEdgeControl: UIControl {
           }
         case .bottom:
 
-          if Self.isScrollableVertically(scrollView: scrollView), scrollView.contentOffset.y
-            > (Self.maximumContentOffset(of: scrollView).y
-              - Constants.refreshAnimationAutoScrollMargin)
+          if Self.isScrollableVertically(scrollView: scrollView),
+            scrollView.contentOffset.y
+              > (Self.maximumContentOffset(of: scrollView).y
+                - Constants.refreshAnimationAutoScrollMargin)
           {
             scrollView.contentOffset.y = (Self.maximumContentOffset(of: scrollView).y + value)
           }
@@ -368,9 +399,10 @@ public final class ScrollEdgeControl: UIControl {
             scrollView.contentOffset.x = -(capturedAdjustedContentInset.left + value)
           }
         case .right:
-          if Self.isScrollableHorizontally(scrollView: scrollView), scrollView.contentOffset.x
-            > (Self.maximumContentOffset(of: scrollView).x
-              - Constants.refreshAnimationAutoScrollMargin)
+          if Self.isScrollableHorizontally(scrollView: scrollView),
+            scrollView.contentOffset.x
+              > (Self.maximumContentOffset(of: scrollView).x
+                - Constants.refreshAnimationAutoScrollMargin)
           {
             scrollView.contentOffset.x = (Self.maximumContentOffset(of: scrollView).x + value)
           }
@@ -436,7 +468,7 @@ public final class ScrollEdgeControl: UIControl {
           do {
             scrollView._scrollEdgeControl_localContentInset[edge: self.targetEdge] = 0
             scrollView.__original_contentInset[edge: self.targetEdge] =
-            userContentInset[edge: self.targetEdge]
+              userContentInset[edge: self.targetEdge]
 
             /// to keep current tracking content offset.
             scrollView.contentOffset = contentOffset
@@ -451,45 +483,6 @@ public final class ScrollEdgeControl: UIControl {
         scrollView.__original_contentInset[edge: self.targetEdge] =
           userContentInset[edge: self.targetEdge] + (value)
 
-        /*
-
-         let capturedAdjustedContentInset = scrollView.adjustedContentInset.subtracting(
-         scrollView._scrollEdgeControl_localContentInset
-         )
-
-        switch self.targetEdge {
-        case .top:
-          if scrollView.contentOffset.y < -capturedAdjustedContentInset.top
-            - Constants.refreshIndicatorLengthAlongScrollDirection
-            + Constants.refreshAnimationAutoScrollMargin
-          {
-            scrollView.contentOffset.y = -(capturedAdjustedContentInset.top + value)
-          }
-        case .bottom:
-          if scrollView.contentOffset.y
-            > (Self.maximumContentOffset(of: scrollView).y
-              + Constants.refreshIndicatorLengthAlongScrollDirection
-              - Constants.refreshAnimationAutoScrollMargin)
-          {
-            scrollView.contentOffset.y = (Self.maximumContentOffset(of: scrollView).y + value)
-          }
-        case .left:
-          if scrollView.contentOffset.x < -capturedAdjustedContentInset.left
-            - Constants.refreshIndicatorLengthAlongScrollDirection
-            + Constants.refreshAnimationAutoScrollMargin
-          {
-            scrollView.contentOffset.x = -(capturedAdjustedContentInset.left + value)
-          }
-        case .right:
-          if scrollView.contentOffset.x
-            > (Self.maximumContentOffset(of: scrollView).x
-              + Constants.refreshIndicatorLengthAlongScrollDirection
-              - Constants.refreshAnimationAutoScrollMargin)
-          {
-            scrollView.contentOffset.x = (Self.maximumContentOffset(of: scrollView).x + value)
-          }
-        }
-         */
       }
 
       contentInsetDynamicAnimator!.simulate(
@@ -519,7 +512,7 @@ public final class ScrollEdgeControl: UIControl {
     componentState.activityState.isActive = true
     componentState.isIdlingToPull = false
 
-    activityIndicatorView?.update(withState: .refreshing)
+    activityIndicatorView?.update(withState: .active)
 
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
       guard let self = self else { return }
@@ -703,7 +696,7 @@ public final class ScrollEdgeControl: UIControl {
               min(1, distanceFromEdge / Constants.rubberBandingLengthToTriggerRefreshing)
             )
 
-            let nextState = RefreshingState.triggering(progress: progressToTriggerRefreshing)
+            let nextState = ActivatingState.triggering(progress: progressToTriggerRefreshing)
 
             if self.refreshingState != nextState {
               self.refreshingState = nextState
@@ -742,14 +735,18 @@ public final class ScrollEdgeControl: UIControl {
   private static func isScrollableVertically(scrollView: UIScrollView) -> Bool {
 
     let contentInset = scrollView._userContentInset
-    return (scrollView.bounds.height - scrollView.contentSize.height - contentInset.top - contentInset.bottom) < 0
+    return
+      (scrollView.bounds.height - scrollView.contentSize.height - contentInset.top
+      - contentInset.bottom) < 0
 
   }
 
   private static func isScrollableHorizontally(scrollView: UIScrollView) -> Bool {
 
     let contentInset = scrollView._userContentInset
-    return (scrollView.bounds.width - scrollView.contentSize.width - contentInset.left - contentInset.right) < 0
+    return
+      (scrollView.bounds.width - scrollView.contentSize.width - contentInset.left
+      - contentInset.right) < 0
 
   }
 
@@ -780,12 +777,18 @@ extension UIScrollView {
     case .top, .left:
       return distance(from: edge)
     case .bottom:
-      let margin = max(0, bounds.height - contentSize.height - adjustedContentInset.top - adjustedContentInset.bottom)
+      let margin = max(
+        0,
+        bounds.height - contentSize.height - adjustedContentInset.top - adjustedContentInset.bottom
+      )
       let contentOffsetMaxY = (bounds.height + contentOffset.y - margin)
       let value = -(contentSize.height - contentOffsetMaxY + adjustedContentInset.bottom)
       return value
     case .right:
-      let margin = max(0, bounds.width - contentSize.width - adjustedContentInset.left - adjustedContentInset.right)
+      let margin = max(
+        0,
+        bounds.width - contentSize.width - adjustedContentInset.left - adjustedContentInset.right
+      )
       let contentOffsetMaxX = (bounds.width + contentOffset.x - margin)
       let value = -(contentSize.width - contentOffsetMaxX + adjustedContentInset.right)
       return value
@@ -795,6 +798,9 @@ extension UIScrollView {
 
 }
 
+/**
+ Special tricks (swizzling)
+ */
 extension UIScrollView {
 
   private enum Associated {
@@ -1070,4 +1076,3 @@ extension UIEdgeInsets {
   }
 
 }
-

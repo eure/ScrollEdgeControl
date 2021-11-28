@@ -12,7 +12,15 @@ Pod::Spec.new do |s|
   s.author             = { "Muukii" => "hiroshi.kimura@eure.jp", "Matto" => "takuma.matsushita@eure.jp" }
   s.ios.deployment_target = "12.0"
   s.source       = { :git => "https://github.com/eure/ScrollEdgeControl.git", :tag => "#{s.version}" }
-  s.source_files  = "ScrollEdgeControl/**/*.swift"
   s.dependency "Advance"
+  s.default_subspec = "ScrollEdgeControl/Library"
 
+  s.subspec "Core" do |ss|
+    ss.source_files = "ScrollEdgeControl/Core/**/*.swift"
+  end
+
+  s.subspec "Library" do |ss|
+    ss.source_files = "ScrollEdgeControl/Library/**/*.swift"
+    ss.dependency "ScrollEdgeControl/Core"
+  end
 end
