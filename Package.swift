@@ -7,11 +7,13 @@ let package = Package(
   products: [
     .library(name: "ScrollEdgeControl", type: .static, targets: ["ScrollEdgeControl"]),
   ],
-  dependencies: [],
+  dependencies: [
+    .package(url: "http://github.com/timdonnelly/Advance", from: "3.0.0")
+  ],
   targets: [
     .target(
       name: "ScrollEdgeControl",
-      dependencies: [],
+      dependencies: ["Advance"],
       path: "ScrollEdgeControl"
     )
   ]
