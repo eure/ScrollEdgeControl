@@ -101,6 +101,7 @@ Refs:
 ## Author
 
 - [Muukii](https://github.com/muukii)
+- [takumatt](https://github.com/takumatt)
 
 ## License
 
