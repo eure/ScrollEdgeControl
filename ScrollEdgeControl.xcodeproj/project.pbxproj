@@ -13,8 +13,6 @@
 		4B39D05527528A1900D013F4 /* DebuggingRefreshIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D05427528A1900D013F4 /* DebuggingRefreshIndicatorView.swift */; };
 		4B39D05727528ACD00D013F4 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D05627528ACD00D013F4 /* Components.swift */; };
 		4B39D05927528B7800D013F4 /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39D05827528B7800D013F4 /* UIControl+Closure.swift */; };
-		4B39D05C275295F600D013F4 /* RevealServer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B39D05A275295EE00D013F4 /* RevealServer.xcframework */; };
-		4B39D05D275295F600D013F4 /* RevealServer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B39D05A275295EE00D013F4 /* RevealServer.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B39D05E2753942F00D013F4 /* DonutsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */; };
 		4B39D05F2753948300D013F4 /* ScrollEdgeActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */; };
 		4B5E52D527515C830075AE52 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E52D427515C830075AE52 /* Book.swift */; };
@@ -33,6 +31,7 @@
 		4BC42850275158F80047A850 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC4284F275158F80047A850 /* RxCocoa */; };
 		4BC42852275158F80047A850 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42851275158F80047A850 /* RxRelay */; };
 		4BC42854275158F80047A850 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42853275158F80047A850 /* RxSwift */; };
+		F8089280E94B364D58AE9485 /* Pods_ScrollEdgeControl_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BDB8D112209913C6592E80 /* Pods_ScrollEdgeControl_Demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +52,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4B5E52D927515CF20075AE52 /* ScrollEdgeControl.framework in Embed Frameworks */,
-				4B39D05D275295F600D013F4 /* RevealServer.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,7 +64,6 @@
 		4B39D05427528A1900D013F4 /* DebuggingRefreshIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggingRefreshIndicatorView.swift; sourceTree = "<group>"; };
 		4B39D05627528ACD00D013F4 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		4B39D05827528B7800D013F4 /* UIControl+Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Closure.swift"; sourceTree = "<group>"; };
-		4B39D05A275295EE00D013F4 /* RevealServer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = RevealServer.xcframework; sourceTree = "<group>"; };
 		4B5E52D427515C830075AE52 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		4B5E52D627515C900075AE52 /* BookContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerViewController.swift; sourceTree = "<group>"; };
 		4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEdgeActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -78,6 +75,9 @@
 		4BC42843275158250047A850 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BC42846275158250047A850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BC42848275158250047A850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B3676DD0B14A8AF4A1E0950 /* Pods-ScrollEdgeControl-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollEdgeControl-Demo.debug.xcconfig"; path = "Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		60BDB8D112209913C6592E80 /* Pods_ScrollEdgeControl_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollEdgeControl_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB5E62FBEBBEB80367C27AF9 /* Pods-ScrollEdgeControl-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollEdgeControl-Demo.release.xcconfig"; path = "Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B66216227515B1900509356 /* StorybookKit in Frameworks */,
-				4B39D05C275295F600D013F4 /* RevealServer.xcframework in Frameworks */,
 				4BC42854275158F80047A850 /* RxSwift in Frameworks */,
 				4B66215F27515AD100509356 /* TypedTextAttributes in Frameworks */,
 				4BC42852275158F80047A850 /* RxRelay in Frameworks */,
@@ -103,6 +102,7 @@
 				4BC42850275158F80047A850 /* RxCocoa in Frameworks */,
 				4B5E52E527515E0A0075AE52 /* MondrianLayout in Frameworks */,
 				4B66216427515B1900509356 /* StorybookUI in Frameworks */,
+				F8089280E94B364D58AE9485 /* Pods_ScrollEdgeControl_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,10 +129,11 @@
 		4BC4281B275157080047A850 = {
 			isa = PBXGroup;
 			children = (
-				4B39D05A275295EE00D013F4 /* RevealServer.xcframework */,
 				4BC42827275157080047A850 /* ScrollEdgeControl */,
 				4BC42839275158240047A850 /* ScrollEdgeControl-Demo */,
 				4BC42826275157080047A850 /* Products */,
+				B9E9D6475B235419648CE13E /* Pods */,
+				BC117ED058EB0299D47C5B75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +171,23 @@
 				4B39D05827528B7800D013F4 /* UIControl+Closure.swift */,
 			);
 			path = "ScrollEdgeControl-Demo";
+			sourceTree = "<group>";
+		};
+		B9E9D6475B235419648CE13E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B3676DD0B14A8AF4A1E0950 /* Pods-ScrollEdgeControl-Demo.debug.xcconfig */,
+				DB5E62FBEBBEB80367C27AF9 /* Pods-ScrollEdgeControl-Demo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC117ED058EB0299D47C5B75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60BDB8D112209913C6592E80 /* Pods_ScrollEdgeControl_Demo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,10 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BC42849275158250047A850 /* Build configuration list for PBXNativeTarget "ScrollEdgeControl-Demo" */;
 			buildPhases = (
+				B0B6502762FA73F77F644FD6 /* [CP] Check Pods Manifest.lock */,
 				4BC42834275158240047A850 /* Sources */,
 				4BC42835275158240047A850 /* Frameworks */,
 				4BC42836275158240047A850 /* Resources */,
 				4B5E52DC27515CF20075AE52 /* Embed Frameworks */,
+				111918E2BF19D3B85370D628 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,6 +318,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		111918E2BF19D3B85370D628 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScrollEdgeControl-Demo/Pods-ScrollEdgeControl-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0B6502762FA73F77F644FD6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ScrollEdgeControl-Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4BC42821275157080047A850 /* Sources */ = {
@@ -525,6 +587,7 @@
 		};
 		4BC4284A275158250047A850 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B3676DD0B14A8AF4A1E0950 /* Pods-ScrollEdgeControl-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -552,6 +615,7 @@
 		};
 		4BC4284B275158250047A850 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB5E62FBEBBEB80367C27AF9 /* Pods-ScrollEdgeControl-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
