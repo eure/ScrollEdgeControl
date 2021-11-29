@@ -100,7 +100,6 @@ Refs:
 
 ## Author
 
-- [Matto](https://github.com/takumatt)
 - [Muukii](https://github.com/muukii)
 
 ## License
