@@ -82,7 +82,16 @@ scrollEdgeControl.handlers.onDidActivate = { instance in
 
 ## Behind the scenes
 
-WIP
+Creating a component such as UIRefreshControl is quite hard.  
+Observing scroll, layout, updating content-inset.  
+While we were inspecting UIRefreshControl, we noticed UIScrollView's content-inset return 0 when it's refreshing. but adjusted-content-inset presents actual value in displaying.  
+(for example, content-inset-top: 0, adjusted-content-inset-top: 50)  
+
+So UIRefreshControl works internally to prevent spreading side-effect by changing content-inset.  
+We need this trick to create our own custom control for UIScrollView.  
+
+In the end, we decided to get this done with method-swizzling.  
+Swapping content-inset getter setter, managing local content-inset, and then we return the value to outside including adding, subtracting actual content-inset and local content-inset.
 
 ## Why uses Advance in dependency
 
