@@ -105,7 +105,7 @@ let scrollEdgeControl: ScrollEdgeControl
 
 let yourContent: YourContent
 
-scrollEdgeControl.setActivityINdicatorView(yourContent)
+scrollEdgeControl.setActivityIndicatorView(yourContent)
 ```
 
 ## Behind the scenes
