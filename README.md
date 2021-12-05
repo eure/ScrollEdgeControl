@@ -11,6 +11,8 @@ For instance, pulling to down, up, left, right to trigger something activity suc
 
 It supports also disabling pull-to-activate, it would be useful in case of displaying as a loading indicator at bottom of the list.
 
+The content on this control supports display any view you want.
+
 ## Showcase
 
 **Vertical**
