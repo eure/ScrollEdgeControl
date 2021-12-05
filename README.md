@@ -82,6 +82,32 @@ scrollEdgeControl.handlers.onDidActivate = { instance in
 }
 ```
 
+## Customizing the content
+
+ScrollEdgeControl supports to display any content you want by following protocol.  
+Which means you can create fully customized design to display the activity.
+
+```swift
+protocol ScrollEdgeActivityIndicatorViewType
+```
+
+```swift
+class YourContent: ScrollEdgeActivityIndicatorViewType {
+
+  func update(withState state: ScrollEdgeControl.ActivatingState) {
+    // Needs implementation
+  }
+}
+```
+
+```swift
+let scrollEdgeControl: ScrollEdgeControl
+
+let yourContent: YourContent
+
+scrollEdgeControl.setActivityINdicatorView(yourContent)
+```
+
 ## Behind the scenes
 
 Creating a component such as UIRefreshControl is quite hard.  
