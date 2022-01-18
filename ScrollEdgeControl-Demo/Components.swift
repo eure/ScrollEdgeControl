@@ -32,7 +32,7 @@ enum Components {
       handler()
     }
 
-    return MondrianLayout.AnyView.init { _ in
+    return AnyView.init { _ in
       label
         .viewBlock
         .padding(4)

@@ -11,11 +11,29 @@
         }
       },
       {
+        "package": "CompositionKit",
+        "repositoryURL": "https://github.com/muukii/CompositionKit.git",
+        "state": {
+          "branch": null,
+          "revision": "a3153e6afe3260d71f7b95d48d5cbe913dc450b9",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "Descriptors",
+        "repositoryURL": "https://github.com/muukii/Descriptors.git",
+        "state": {
+          "branch": null,
+          "revision": "b93f250d6e4007d512da77b1138acd03c11d4550",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "MondrianLayout",
         "repositoryURL": "https://github.com/muukii/MondrianLayout.git",
         "state": {
           "branch": "main",
-          "revision": "54643c169dc913ec8b9950bbd9277f1703b56fb8",
+          "revision": "239bc0b02b8abbc211720476d1554b736832bb9c",
           "version": null
         }
       },
@@ -24,8 +42,8 @@
         "repositoryURL": "git@github.com:ReactiveX/RxSwift.git",
         "state": {
           "branch": null,
-          "revision": "7c17a6ccca06b5c107cfa4284e634562ddaf5951",
-          "version": "6.2.0"
+          "revision": "b4307ba0b6425c0ba4178e138799946c3da594f8",
+          "version": "6.5.0"
         }
       },
       {
@@ -42,8 +60,8 @@
         "repositoryURL": "git@github.com:eure/Storybook-ios.git",
         "state": {
           "branch": null,
-          "revision": "e15ea90fd59c8351e9742b2b8837d05ed462bd74",
-          "version": "1.8.1"
+          "revision": "48cd0bbecd40edabcce32e819c5a23014a49013b",
+          "version": "1.9.0"
         }
       },
       {
@@ -53,6 +71,15 @@
           "branch": null,
           "revision": "0f0986f98f3c81d455a48886561679245890782a",
           "version": "1.3.0"
+        }
+      },
+      {
+        "package": "Verge",
+        "repositoryURL": "https://github.com/VergeGroup/Verge",
+        "state": {
+          "branch": null,
+          "revision": "fd470f3189c52f851553caf13b8b1dd6795207bc",
+          "version": "8.15.0"
         }
       }
     ]

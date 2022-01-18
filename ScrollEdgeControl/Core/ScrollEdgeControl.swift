@@ -148,10 +148,10 @@ public final class ScrollEdgeControl: UIControl {
   fileprivate enum Log {
 
     private static let log: OSLog = {
-      #if RELEASE
-      return .disabled
-      #else
+      #if SCROLLEDGECONTROL_LOG_ENABLED
       return OSLog.init(subsystem: "ScrollEdgeControl", category: "ScrollEdgeControl")
+      #else
+      return .disabled
       #endif
     }()
 
