@@ -16,7 +16,7 @@ public protocol ScrollEdgeActivityIndicatorViewType: UIView {
 public final class ScrollEdgeControl: UIControl {
 
   public struct Handlers {
-    public var onDidBeginRefreshing: (ScrollEdgeControl) -> Void = { _ in }
+    public var onDidActivate: (ScrollEdgeControl) -> Void = { _ in }
   }
 
   /**
@@ -517,7 +517,7 @@ public final class ScrollEdgeControl: UIControl {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
       guard let self = self else { return }
       self.sendActions(for: .valueChanged)
-      self.handlers.onDidBeginRefreshing(self)
+      self.handlers.onDidActivate(self)
     }
 
     feedbackGenerator.impactOccurred()
