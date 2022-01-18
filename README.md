@@ -73,7 +73,7 @@ scrollableView.addSubview(scrollEdgeControl) // ✅ Could add multiple controls 
 **Handling**
 
 ```swift
-scrollEdgeControl.handlers.onDidActivate = { instance in
+scrollEdgeControl.handlers.onDidBeginRefreshing = { instance in
 
   ...
 
