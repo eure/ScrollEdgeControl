@@ -123,7 +123,7 @@ Swapping content-inset getter setter, managing local content-inset, and then we 
 
 ## Why uses Advance in dependency
 
-Advance helps animation in the scroll view.
+[Advance](https://github.com/timdonnelly/Advance) helps animation in the scroll view.
 
 It is a library to run animations with fully computable values using CADisplayLink.
 
