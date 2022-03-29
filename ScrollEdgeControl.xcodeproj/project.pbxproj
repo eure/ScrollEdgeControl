@@ -23,7 +23,9 @@
 		4B66215F27515AD100509356 /* TypedTextAttributes in Frameworks */ = {isa = PBXBuildFile; productRef = 4B66215E27515AD100509356 /* TypedTextAttributes */; };
 		4B66216227515B1900509356 /* StorybookKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B66216127515B1900509356 /* StorybookKit */; };
 		4B66216427515B1900509356 /* StorybookUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4B66216327515B1900509356 /* StorybookUI */; };
-		4B6ABA2A2796E28600D9BFC6 /* CompositionKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6ABA292796E28600D9BFC6 /* CompositionKit */; };
+		4B98480627F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98480527F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift */; };
+		4B98480927F33C5200ED3FA9 /* CompositionKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B98480827F33C5200ED3FA9 /* CompositionKit */; };
+		4B98480B27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98480A27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift */; };
 		4BC42830275157320047A850 /* ScrollEdgeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4282F275157320047A850 /* ScrollEdgeControl.swift */; };
 		4BC42833275157C00047A850 /* Advance in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42832275157C00047A850 /* Advance */; };
 		4BC4283B275158240047A850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4283A275158240047A850 /* AppDelegate.swift */; };
@@ -68,6 +70,8 @@
 		4B5E52D627515C900075AE52 /* BookContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContainerViewController.swift; sourceTree = "<group>"; };
 		4B5E52DF27515DC30075AE52 /* ScrollEdgeActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEdgeActivityIndicatorView.swift; sourceTree = "<group>"; };
 		4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutsIndicatorView.swift; sourceTree = "<group>"; };
+		4B98480527F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollStickyVerticalHeaderView.swift; sourceTree = "<group>"; };
+		4B98480A27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoVerticalStickyHeaderViewController.swift; sourceTree = "<group>"; };
 		4BC42825275157080047A850 /* ScrollEdgeControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScrollEdgeControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC4282F275157320047A850 /* ScrollEdgeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEdgeControl.swift; sourceTree = "<group>"; };
 		4BC42838275158240047A850 /* ScrollEdgeControl-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScrollEdgeControl-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B6ABA2A2796E28600D9BFC6 /* CompositionKit in Frameworks */,
 				4BC42833275157C00047A850 /* Advance in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +100,7 @@
 				4BC42852275158F80047A850 /* RxRelay in Frameworks */,
 				4B5E52D827515CF20075AE52 /* ScrollEdgeControl.framework in Frameworks */,
 				4B39D04F2752740100D013F4 /* StackScrollView in Frameworks */,
+				4B98480927F33C5200ED3FA9 /* CompositionKit in Frameworks */,
 				4BC42850275158F80047A850 /* RxCocoa in Frameworks */,
 				4B5E52E527515E0A0075AE52 /* MondrianLayout in Frameworks */,
 				4B66216427515B1900509356 /* StorybookUI in Frameworks */,
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				4BC4282F275157320047A850 /* ScrollEdgeControl.swift */,
+				4B98480527F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -123,12 +128,20 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		4B98480727F33C5200ED3FA9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4BC4281B275157080047A850 = {
 			isa = PBXGroup;
 			children = (
 				4BC42827275157080047A850 /* ScrollEdgeControl */,
 				4BC42839275158240047A850 /* ScrollEdgeControl-Demo */,
 				4BC42826275157080047A850 /* Products */,
+				4B98480727F33C5200ED3FA9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +169,7 @@
 				4B39D05427528A1900D013F4 /* DebuggingRefreshIndicatorView.swift */,
 				4B39D0502752745C00D013F4 /* DemoHorizontalViewController.swift */,
 				4B39D0522752746600D013F4 /* DemoVerticalViewController.swift */,
+				4B98480A27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift */,
 				4BC4283A275158240047A850 /* AppDelegate.swift */,
 				4B5E52D427515C830075AE52 /* Book.swift */,
 				4B5E52D627515C900075AE52 /* BookContainerViewController.swift */,
@@ -197,7 +211,6 @@
 			name = ScrollEdgeControl;
 			packageProductDependencies = (
 				4BC42832275157C00047A850 /* Advance */,
-				4B6ABA292796E28600D9BFC6 /* CompositionKit */,
 			);
 			productName = ScrollEdgeControl;
 			productReference = 4BC42825275157080047A850 /* ScrollEdgeControl.framework */;
@@ -227,6 +240,7 @@
 				4B66216327515B1900509356 /* StorybookUI */,
 				4B5E52E427515E0A0075AE52 /* MondrianLayout */,
 				4B39D04E2752740100D013F4 /* StackScrollView */,
+				4B98480827F33C5200ED3FA9 /* CompositionKit */,
 			);
 			productName = "ScrollEdgeControl-Demo";
 			productReference = 4BC42838275158240047A850 /* ScrollEdgeControl-Demo.app */;
@@ -304,6 +318,7 @@
 			files = (
 				4BC42830275157320047A850 /* ScrollEdgeControl.swift in Sources */,
 				4B39D05F2753948300D013F4 /* ScrollEdgeActivityIndicatorView.swift in Sources */,
+				4B98480627F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift in Sources */,
 				4B39D05E2753942F00D013F4 /* DonutsIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +335,7 @@
 				4B39D05727528ACD00D013F4 /* Components.swift in Sources */,
 				4B39D0512752745C00D013F4 /* DemoHorizontalViewController.swift in Sources */,
 				4B39D05527528A1900D013F4 /* DebuggingRefreshIndicatorView.swift in Sources */,
+				4B98480B27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,7 +708,7 @@
 			package = 4B66216027515B1800509356 /* XCRemoteSwiftPackageReference "Storybook-ios" */;
 			productName = StorybookUI;
 		};
-		4B6ABA292796E28600D9BFC6 /* CompositionKit */ = {
+		4B98480827F33C5200ED3FA9 /* CompositionKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4B6ABA282796E28600D9BFC6 /* XCRemoteSwiftPackageReference "CompositionKit" */;
 			productName = CompositionKit;

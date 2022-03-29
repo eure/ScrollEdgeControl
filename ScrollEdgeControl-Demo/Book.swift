@@ -63,4 +63,12 @@ let book = Book(title: "MyBook") {
       )
     }
   }
+  
+  BookNavigationLink(title: "Sticky") {
+    
+    BookPush(title: "Vertical") {
+      DemoVerticalStickyHeaderViewController()
+    }
+    
+  }
 }
