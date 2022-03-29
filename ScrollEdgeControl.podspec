@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ScrollEdgeControl"
-  s.version      = "1.0.0"
+  s.version      = "1.2.0"
   s.summary      = "Yet another UIRefreshControl"
   s.description  = <<-DESC
   Yet another UIRefreshControl. It's control for edge in scroll view.
