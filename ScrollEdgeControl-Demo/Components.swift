@@ -1,6 +1,7 @@
 @testable import ScrollEdgeControl
 import MondrianLayout
 import UIKit
+import CompositionKit
 
 enum Components {
 
@@ -61,7 +62,7 @@ enum Components {
       // Fallback on earlier versions
     }
 
-    return MondrianLayout.AnyView.init { _ in
+    return AnyView.init { _ in
       view
         .viewBlock
         .padding(4)
@@ -74,7 +75,7 @@ enum Components {
     button.setTitle(title, for: .normal)
     button.onTap(onTap)
 
-    return MondrianLayout.AnyView.init { view in
+    return AnyView.init { view in
       VStackBlock {
         button
           .viewBlock
@@ -100,7 +101,7 @@ enum Components {
     decreaseButton.setTitle("-", for: .normal)
     decreaseButton.onTap(onDecreased)
 
-    return MondrianLayout.AnyView.init { view in
+    return AnyView.init { view in
       VStackBlock {
         titleLabel
         HStackBlock(spacing: 4) {
