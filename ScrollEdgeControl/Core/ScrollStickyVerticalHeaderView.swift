@@ -138,7 +138,8 @@ public final class ScrollStickyVerticalHeaderView: UIView {
     guard let targetScrollView = targetScrollView else {
       return
     }
-
+    
+    /// for now, to get default adjustment content inset according to only safe-area-insets by setting 0 before setting new content inset.
     targetScrollView.contentInset.top = 0
 
     guard let contentView = componentState.contentView else {
