@@ -1,34 +1,73 @@
+import Advance
 import UIKit
 
 public protocol ScrollStickyContentType: UIView {
 
+  func receive(
+    state: ScrollStickyVerticalHeaderView.ContentState,
+    oldState: ScrollStickyVerticalHeaderView.ContentState?
+  )
 }
 
 extension ScrollStickyContentType {
 
-  public func requestUpdateSizing() {
+  public func requestUpdateSizing(animated: Bool) {
     guard let target = superview as? ScrollStickyVerticalHeaderView else {
       return
     }
 
-    target.updateContentInset()
+    target.reloadState(animated: animated)
+  }
+
+  public func receive(
+    state: ScrollStickyVerticalHeaderView.ContentState,
+    oldState: ScrollStickyVerticalHeaderView.ContentState?
+  ) {
+
   }
 }
 
-/**
- With: ``ScrollStickyContentType``
- */
+/// With: ``ScrollStickyContentType``
 public final class ScrollStickyVerticalHeaderView: UIView {
 
-  public struct ComponentState: Equatable {
-    var hasAttachedToScrollView = false
-    var contentViewFrame: CGRect = .null
-    var contentView: UIView?
+  public struct ContentState: Equatable {
+    public var contentOffset: CGPoint = .zero
+    public var isActive: Bool = true
   }
 
-  public var componentState: ComponentState = .init()
+  struct ComponentState: Equatable {
+    var hasAttachedToScrollView = false
+    var safeAreaInsets: UIEdgeInsets = .zero
+    var isActive: Bool = true
+  }
 
+  private var isInAnimating = false
+  private var componentState: ComponentState = .init() {
+    didSet {
+      guard oldValue != componentState else {
+        return
+      }
+      update(with: componentState, oldState: oldValue)
+    }
+  }
+
+  public var isActive: Bool {
+    componentState.isActive
+  }
+
+  private var contentState: ContentState = .init() {
+    didSet {
+      guard oldValue != contentState else {
+        return
+      }
+      contentView?.receive(state: contentState, oldState: oldValue)
+    }
+  }
+
+  private var contentView: ScrollStickyContentType?
   private var observations: [NSKeyValueObservation] = []
+
+  private var contentInsetTopDynamicAnimator: Animator<CGFloat>?
 
   private weak var targetScrollView: UIScrollView? = nil
 
@@ -41,10 +80,9 @@ public final class ScrollStickyVerticalHeaderView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  public func setContent(_ contentView: UIView) {
+  public func setContent(_ contentView: ScrollStickyContentType) {
 
-    componentState.contentViewFrame = .null
-    componentState.contentView = contentView
+    self.contentView = contentView
 
     subviews.forEach {
       $0.removeFromSuperview()
@@ -60,7 +98,20 @@ public final class ScrollStickyVerticalHeaderView: UIView {
       contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
 
-    updateContentInset()
+    reloadState(animated: false)
+
+    contentView.receive(state: contentState, oldState: nil)
+  }
+
+  public func setIsActive(_ isActive: Bool, animated: Bool) {
+
+    if animated {
+      isInAnimating = true
+      componentState.isActive = isActive
+      isInAnimating = false
+    } else {
+      componentState.isActive = isActive
+    }
 
   }
 
@@ -105,7 +156,7 @@ public final class ScrollStickyVerticalHeaderView: UIView {
   }
 
   private func addObservation(scrollView: UIScrollView) {
-    
+
     self.observations.forEach {
       $0.invalidate()
     }
@@ -116,41 +167,104 @@ public final class ScrollStickyVerticalHeaderView: UIView {
       scrollView.observe(\.safeAreaInsets, options: [.old, .new]) {
         [weak self] scrollView, _ in
 
-        self?.updateContentInset()
+        self?.componentState.safeAreaInsets = scrollView.safeAreaInsets
+
       },
-//      scrollView.observe(\.contentOffset, options: [.new]) {
-//        [weak self] scrollView, value in
-//
-//        guard
-//          let self = self
-//        else {
-//          return
-//        }
-//
-//      },
+      scrollView.observe(\.contentOffset, options: [.new]) {
+        [weak self] scrollView, value in
+
+        guard
+          let self = self
+        else {
+          return
+        }
+
+        self.contentState.contentOffset = scrollView.contentOffset
+      },
+
     ]
-    
+
     self.observations = newObservations
   }
- 
-  func updateContentInset() {
 
-    guard let targetScrollView = targetScrollView else {
-      return
+  internal func reloadState(animated: Bool) {
+
+    if animated {
+      isInAnimating = true
+      update(with: componentState, oldState: nil)
+      isInAnimating = false
+    } else {
+      update(with: componentState, oldState: nil)
     }
-    
-    /// for now, to get default adjustment content inset according to only safe-area-insets by setting 0 before setting new content inset.
-    targetScrollView.contentInset.top = 0
+  }
 
-    guard let contentView = componentState.contentView else {
-      return
+  private func update(with state: ComponentState, oldState: ComponentState?) {
+
+    assert(Thread.isMainThread)
+
+    let animated = isInAnimating
+
+    if state.isActive != oldState?.isActive {
+      contentState.isActive = state.isActive
     }
 
-    let adjustedContentInset = targetScrollView.adjustedContentInset
+    if let targetScrollView = targetScrollView,
+      let contentView = contentView,
+      state.safeAreaInsets != oldState?.safeAreaInsets || state.isActive != oldState?.isActive
+    {
 
-    let size = calculateFittingSize(view: contentView)
+      let targetValue: CGFloat = {
+        if state.isActive {
 
-    targetScrollView.contentInset.top = size.height - adjustedContentInset.top
+          let size = calculateFittingSize(view: contentView)
+          let targetValue = size.height - state.safeAreaInsets.top
+          return targetValue
+
+        } else {
+
+          return 0
+        }
+      }()
+
+      if animated {
+
+        contentInsetTopDynamicAnimator = Animator(initialValue: targetScrollView.contentInset.top)
+
+        contentInsetTopDynamicAnimator!.onChange = { [weak self, weak targetScrollView] value in
+
+          guard let self = self, let targetScrollView = targetScrollView else {
+            return
+          }
+
+          guard targetScrollView.isTracking == false else {
+            self.contentInsetTopDynamicAnimator?.cancelRunningAnimation()
+            self.contentInsetTopDynamicAnimator = nil
+            targetScrollView.contentInset.top = targetValue
+            return
+          }
+
+          targetScrollView.contentInset.top = value
+
+        }
+
+        contentInsetTopDynamicAnimator!.simulate(
+          using: SpringFunction(
+            target: targetValue,
+            tension: 1200,
+            damping: 120
+          )
+        )
+
+      } else {
+
+        contentInsetTopDynamicAnimator?.cancelRunningAnimation()
+        contentInsetTopDynamicAnimator = nil
+
+        targetScrollView.contentInset.top = targetValue
+
+      }
+    }
+
   }
 
   private func calculateFittingSize(view: UIView) -> CGSize {
