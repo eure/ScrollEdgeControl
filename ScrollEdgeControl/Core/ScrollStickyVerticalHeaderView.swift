@@ -30,6 +30,14 @@ extension ScrollStickyContentType {
 /// With: ``ScrollStickyContentType``
 public final class ScrollStickyVerticalHeaderView: UIView {
 
+  public struct Configuration {
+    public let scrollsTogether: Bool
+    
+    public init(scrollsTogether: Bool = true) {
+      self.scrollsTogether = scrollsTogether
+    }
+  }
+
   public struct ContentState: Equatable {
     public var contentOffset: CGPoint = .zero
     public var isActive: Bool = true
@@ -40,8 +48,15 @@ public final class ScrollStickyVerticalHeaderView: UIView {
     var safeAreaInsets: UIEdgeInsets = .zero
     var isActive: Bool = true
   }
+  
+  public let configuration: Configuration
+    
+  public var isActive: Bool {
+    componentState.isActive
+  }
 
   private var isInAnimating = false
+  
   private var componentState: ComponentState = .init() {
     didSet {
       guard oldValue != componentState else {
@@ -49,10 +64,6 @@ public final class ScrollStickyVerticalHeaderView: UIView {
       }
       update(with: componentState, oldState: oldValue)
     }
-  }
-
-  public var isActive: Bool {
-    componentState.isActive
   }
 
   private var contentState: ContentState = .init() {
@@ -65,13 +76,17 @@ public final class ScrollStickyVerticalHeaderView: UIView {
   }
 
   private var contentView: ScrollStickyContentType?
+  
   private var observations: [NSKeyValueObservation] = []
 
   private var contentInsetTopDynamicAnimator: Animator<CGFloat>?
+  
+  private var topConstraint: NSLayoutConstraint?
 
   private weak var targetScrollView: UIScrollView? = nil
 
-  public init() {
+  public init(configuration: Configuration = .init()) {
+    self.configuration = configuration
     super.init(frame: .null)
   }
 
@@ -146,8 +161,11 @@ public final class ScrollStickyVerticalHeaderView: UIView {
     addObservation(scrollView: scrollView)
 
     self.translatesAutoresizingMaskIntoConstraints = false
+    
+    topConstraint = topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor)
+    
     NSLayoutConstraint.activate([
-      topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
+      topConstraint!,
       leftAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leftAnchor),
       rightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.rightAnchor),
       bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.contentLayoutGuide.topAnchor),
@@ -178,20 +196,24 @@ public final class ScrollStickyVerticalHeaderView: UIView {
         else {
           return
         }
-
+        
+        if self.configuration.scrollsTogether {
+          self.topConstraint?.constant = min(0, -(scrollView.contentOffset.y + scrollView.adjustedContentInset.top))
+        }
+        
         self.contentState.contentOffset = scrollView.contentOffset
       },
       scrollView.layer.observe(\.sublayers, options: [.new]) {
         [weak self, weak scrollView] layer, value in
-        
+
         guard
           let self = self,
           let scrollView = scrollView
         else {
           return
         }
-        
-        scrollView.insertSubview(self, at: 0)                        
+
+        scrollView.insertSubview(self, at: 0)
       },
 
     ]

@@ -25,7 +25,7 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
     
     let contentView = UIView()
     contentView.backgroundColor = .systemYellow.withAlphaComponent(0.8)
-    contentView.mondrian.layout.height(300).activate()
+    contentView.mondrian.layout.height(1000).activate()
     
     let toggleButton = UIButton(type: .system)
     toggleButton.setTitle("Toggle", for: .normal)
