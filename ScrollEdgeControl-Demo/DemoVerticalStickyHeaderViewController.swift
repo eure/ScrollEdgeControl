@@ -11,6 +11,8 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let edgeControl = ScrollEdgeControl(edge: .top, configuration: .init(), activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black))
         
     let headerView = HeaderView()
       
@@ -23,11 +25,23 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
     
     let contentView = UIView()
     contentView.backgroundColor = .systemYellow.withAlphaComponent(0.8)
-    
     contentView.mondrian.layout.height(300).activate()
+    
+    let toggleButton = UIButton(type: .system)
+    toggleButton.setTitle("Toggle", for: .normal)
+    toggleButton.onTap { 
+      stickyView.setIsActive(!stickyView.isActive, animated: true)
+    }
+    
+    Mondrian.buildSubviews(on: contentView) {
+      VStackBlock {
+        toggleButton
+      }
+    }
     
     scrollView.setContent(contentView)
     scrollView.addSubview(stickyView)
+    scrollView.addSubview(edgeControl)
     scrollView.alwaysBounceVertical = true
     
     Mondrian.buildSubviews(on: view) {
@@ -69,7 +83,7 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
     
     @objc private func updateText() {
       label.text = BookGenerator.loremIpsum(length: [10, 50, 100].randomElement()!)
-      requestUpdateSizing()
+      requestUpdateSizing(animated: true)
     }
     
   }
