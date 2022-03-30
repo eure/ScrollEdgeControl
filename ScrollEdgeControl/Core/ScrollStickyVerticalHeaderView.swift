@@ -181,6 +181,18 @@ public final class ScrollStickyVerticalHeaderView: UIView {
 
         self.contentState.contentOffset = scrollView.contentOffset
       },
+      scrollView.layer.observe(\.sublayers, options: [.new]) {
+        [weak self, weak scrollView] layer, value in
+        
+        guard
+          let self = self,
+          let scrollView = scrollView
+        else {
+          return
+        }
+        
+        scrollView.insertSubview(self, at: 0)                        
+      },
 
     ]
 
