@@ -326,9 +326,10 @@ public final class ScrollStickyVerticalHeaderView: UIView {
       }
     }
     
-    if let topConstraint = topConstraint, state.contentOffset != oldState?.contentOffset {
+    if let topConstraint = topConstraint, state.contentOffset != oldState?.contentOffset || state.configuration != oldState?.configuration {
       if self.configuration.scrollsTogether {
         topConstraint.constant = min(0, -(state.contentOffset.y + (targetScrollView?.adjustedContentInset.top ?? 0)))
+        print(targetScrollView?.adjustedContentInset)
       }
     }
     
