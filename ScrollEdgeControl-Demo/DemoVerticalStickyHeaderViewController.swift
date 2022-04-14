@@ -14,7 +14,7 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
     
     let edgeControl = ScrollEdgeControl(edge: .top, configuration: .init(), activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black))
         
-    let headerView = HeaderView()
+    let headerView = LongHeaderView()
       
     let stickyView = ScrollStickyVerticalHeaderView()
     
@@ -26,16 +26,26 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
     let contentView = UIView()
     contentView.backgroundColor = .systemYellow.withAlphaComponent(0.8)
     contentView.mondrian.layout.height(1000).activate()
-    
-    let toggleButton = UIButton(type: .system)
-    toggleButton.setTitle("Toggle", for: .normal)
-    toggleButton.onTap { 
-      stickyView.setIsActive(!stickyView.isActive, animated: true)
-    }
-    
+  
     Mondrian.buildSubviews(on: contentView) {
       VStackBlock {
-        toggleButton
+        UIButton.make(title: "IsActive") {
+          stickyView.setIsActive(!stickyView.isActive, animated: true)
+        }
+        
+        UIButton.make(title: "Attaches SafeArea") {
+          stickyView.configuration.attachesToSafeArea.toggle()
+        }
+        
+        UIButton.make(title: "Short content") {
+          stickyView.setContent(ShortHeaderView())
+        }
+        
+        UIButton.make(title: "Long content") {
+          stickyView.setContent(LongHeaderView())
+        }
+        
+        StackingSpacer(minLength: 0)
       }
     }
     
@@ -52,7 +62,7 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
     
   }
 
-  private final class HeaderView: CodeBasedView, ScrollStickyContentType {
+  private final class LongHeaderView: CodeBasedView, ScrollStickyContentType {
     
     private let label = UILabel()
     
@@ -60,7 +70,7 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
       
       super.init(frame: .null)
       
-      backgroundColor = .systemBlue.withAlphaComponent(0.8)
+      backgroundColor = .systemGray.withAlphaComponent(0.8)
 //      mondrian.layout.height(100).activate()
       
       let button = UIButton(type: .system)
@@ -77,6 +87,7 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
           label
             .viewBlock
             .padding(16)
+            .padding(.vertical, 50)
         }
       }
     }
@@ -84,6 +95,32 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
     @objc private func updateText() {
       label.text = BookGenerator.loremIpsum(length: [10, 50, 100].randomElement()!)
       requestUpdateSizing(animated: true)
+    }
+    
+  }
+  
+  private final class ShortHeaderView: CodeBasedView, ScrollStickyContentType {
+    
+    private let label = UILabel()
+    
+    init() {
+      
+      super.init(frame: .null)
+      
+      backgroundColor = .systemPurple
+      
+      let label = UILabel()
+      label.text = "Short"
+   
+      Mondrian.buildSubviews(on: self) {
+        
+        VStackBlock {
+          StackingSpacer(minLength: 100)
+          label
+            .viewBlock
+            .padding(32)
+        }
+      }
     }
     
   }
