@@ -12,7 +12,7 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let edgeControl = ScrollEdgeControl(edge: .top, configuration: .init(), activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black))
+//    let edgeControl = ScrollEdgeControl(edge: .top, configuration: .init(), activityIndicatorView: ScrollEdgeActivityIndicatorView(color: .black))
         
     let headerView = LongHeaderView()
       
@@ -51,7 +51,7 @@ final class DemoVerticalStickyHeaderViewController: UIViewController {
     
     scrollView.setContent(contentView)
     scrollView.addSubview(stickyView)
-    scrollView.addSubview(edgeControl)
+//    scrollView.addSubview(edgeControl)
     scrollView.alwaysBounceVertical = true
     
     Mondrian.buildSubviews(on: view) {

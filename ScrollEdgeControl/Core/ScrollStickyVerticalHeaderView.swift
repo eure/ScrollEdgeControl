@@ -263,12 +263,6 @@ public final class ScrollStickyVerticalHeaderView: UIView {
       
     }
     
-    if let topConstraint = topConstraint, state.contentOffset != oldState?.contentOffset {
-      if self.configuration.scrollsTogether {
-        topConstraint.constant = min(0, -(state.contentOffset.y + (targetScrollView?.adjustedContentInset.top ?? 0)))
-      }
-    }
-    
     if let targetScrollView = targetScrollView,
       let contentView = contentView,
        state.safeAreaInsets != oldState?.safeAreaInsets || state.isActive != oldState?.isActive || state.configuration != oldState?.configuration
@@ -331,7 +325,13 @@ public final class ScrollStickyVerticalHeaderView: UIView {
 
       }
     }
-
+    
+    if let topConstraint = topConstraint, state.contentOffset != oldState?.contentOffset {
+      if self.configuration.scrollsTogether {
+        topConstraint.constant = min(0, -(state.contentOffset.y + (targetScrollView?.adjustedContentInset.top ?? 0)))
+      }
+    }
+    
   }
 
   private func calculateFittingSize(view: UIView) -> CGSize {
