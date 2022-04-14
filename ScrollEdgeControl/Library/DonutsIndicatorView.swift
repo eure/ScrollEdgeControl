@@ -31,6 +31,11 @@ public final class DonutsIndicatorView: UIView {
       placeholderColor: UIColor(white: 0, alpha: 0.1),
       tickColor: UIColor(white: 0, alpha: 0.2)
     )
+      
+    public init(placeholderColor: UIColor, tickColor: UIColor) {
+      self.placeholderColor = placeholderColor
+      self.tickColor = tickColor
+    }
   }
 
   // MARK: - Properties
