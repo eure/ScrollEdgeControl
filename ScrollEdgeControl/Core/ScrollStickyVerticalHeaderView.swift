@@ -143,6 +143,13 @@ public final class ScrollStickyVerticalHeaderView: UIView {
   public override func didMoveToSuperview() {
 
     super.didMoveToSuperview()
+    
+    // We cannot rely on the existence of self.superview to decide whether to setup scrollView,
+    // because it did not exist yet on iOS 13.
+    guard componentState.hasAttachedToScrollView == false else {
+      // No need to setup scrollView.
+      return
+    }
 
     guard let superview = superview else {
       componentState.hasAttachedToScrollView = false
@@ -215,6 +222,12 @@ public final class ScrollStickyVerticalHeaderView: UIView {
           let self = self,
           let scrollView = scrollView
         else {
+          return
+        }
+
+        // check if already inserted to index 0.
+        if let firstSubview = scrollView.subviews.first,
+           firstSubview == self {
           return
         }
 
