@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
   name: "ScrollEdgeControl",
-  platforms: [.iOS(.v12)],
+  platforms: [.iOS(.v13)],
   products: [
     .library(name: "ScrollEdgeControl", type: .static, targets: ["ScrollEdgeControl"]),
     .library(name: "ScrollEdgeControlComponents", type: .static, targets: ["ScrollEdgeControlComponents"]),
