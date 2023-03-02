@@ -562,15 +562,27 @@ public final class ScrollEdgeControl: UIControl {
 
   private func layoutSelfInScrollView() {
 
+    func setFrame(_ frame: CGRect) {
+      guard self.frame != frame else {
+        return
+      }
+      self.frame = frame
+    }
+
+    func setZPosition(_ position: CGFloat) {
+      guard layer.zPosition != position else { return }
+      layer.zPosition = position
+    }
+
     guard let scrollView = targetScrollView else {
       return
     }
 
     switch configuration.zLayoutMode {
     case .front:
-      layer.zPosition = 1
+      setZPosition(1)
     case .back:
-      layer.zPosition = -1
+      setZPosition(-1)
     }
 
     let length: CGFloat
@@ -603,7 +615,7 @@ public final class ScrollEdgeControl: UIControl {
         size: sizeForVertical
       )
 
-      self.frame = frame
+      setFrame(frame)
 
     case .bottom:
 
@@ -616,7 +628,7 @@ public final class ScrollEdgeControl: UIControl {
         size: sizeForVertical
       )
 
-      self.frame = frame
+      setFrame(frame)
 
     case .left:
 
@@ -628,7 +640,7 @@ public final class ScrollEdgeControl: UIControl {
         size: sizeForHorizontal
       )
 
-      self.frame = frame
+      setFrame(frame)
 
     case .right:
 
@@ -641,7 +653,7 @@ public final class ScrollEdgeControl: UIControl {
         size: sizeForHorizontal
       )
 
-      self.frame = frame
+      setFrame(frame)
 
     }
 
