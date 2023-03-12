@@ -562,11 +562,24 @@ public final class ScrollEdgeControl: UIControl {
 
   private func layoutSelfInScrollView() {
 
-    func setFrame(_ frame: CGRect) {
-      guard self.frame != frame else {
+    func setSize(_ size: CGSize) {
+      guard self.bounds.size != size else {
         return
       }
-      self.frame = frame
+      self.bounds.size = size
+    }
+
+    func setPosition(point: CGPoint) {
+
+      self.resetCenter()
+
+      self.layer.transform = CATransform3DMakeAffineTransform(.init(translationX: point.x, y: point.y))
+
+    }
+
+    func setFrame(_ frame: CGRect) {
+      setSize(frame.size)
+      setPosition(point: frame.origin)
     }
 
     func setZPosition(_ position: CGFloat) {
