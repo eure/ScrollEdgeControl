@@ -25,6 +25,7 @@
 		4B98480627F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98480527F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift */; };
 		4B98480927F33C5200ED3FA9 /* CompositionKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B98480827F33C5200ED3FA9 /* CompositionKit */; };
 		4B98480B27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98480A27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift */; };
+		4B9A4D0D29BDAFC70043C4B5 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A4D0C29BDAFC70043C4B5 /* UIView+Frame.swift */; };
 		4BB7DA652807F141004A5992 /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB7DA642807F141004A5992 /* UIControl+Closure.swift */; };
 		4BC42830275157320047A850 /* ScrollEdgeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4282F275157320047A850 /* ScrollEdgeControl.swift */; };
 		4BC42833275157C00047A850 /* Advance in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42832275157C00047A850 /* Advance */; };
@@ -71,6 +72,7 @@
 		4B5E52E127515DE30075AE52 /* DonutsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutsIndicatorView.swift; sourceTree = "<group>"; };
 		4B98480527F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollStickyVerticalHeaderView.swift; sourceTree = "<group>"; };
 		4B98480A27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoVerticalStickyHeaderViewController.swift; sourceTree = "<group>"; };
+		4B9A4D0C29BDAFC70043C4B5 /* UIView+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
 		4BB7DA642807F141004A5992 /* UIControl+Closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIControl+Closure.swift"; path = "../../../muukii/FluidInterfaceKit/Sources/FluidInterfaceKit-Demo/UIControl+Closure.swift"; sourceTree = "<group>"; };
 		4BC42825275157080047A850 /* ScrollEdgeControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScrollEdgeControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC4282F275157320047A850 /* ScrollEdgeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEdgeControl.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				4BC4282F275157320047A850 /* ScrollEdgeControl.swift */,
 				4B98480527F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift */,
+				4B9A4D0C29BDAFC70043C4B5 /* UIView+Frame.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BC42830275157320047A850 /* ScrollEdgeControl.swift in Sources */,
+				4B9A4D0D29BDAFC70043C4B5 /* UIView+Frame.swift in Sources */,
 				4B39D05F2753948300D013F4 /* ScrollEdgeActivityIndicatorView.swift in Sources */,
 				4B98480627F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift in Sources */,
 				4B39D05E2753942F00D013F4 /* DonutsIndicatorView.swift in Sources */,
