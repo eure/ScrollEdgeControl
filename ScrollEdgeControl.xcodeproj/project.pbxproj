@@ -26,7 +26,6 @@
 		4B98480927F33C5200ED3FA9 /* CompositionKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B98480827F33C5200ED3FA9 /* CompositionKit */; };
 		4B98480B27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98480A27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift */; };
 		4B9A4D0D29BDAFC70043C4B5 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A4D0C29BDAFC70043C4B5 /* UIView+Frame.swift */; };
-		4BB7DA652807F141004A5992 /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB7DA642807F141004A5992 /* UIControl+Closure.swift */; };
 		4BC42830275157320047A850 /* ScrollEdgeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4282F275157320047A850 /* ScrollEdgeControl.swift */; };
 		4BC42833275157C00047A850 /* Advance in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42832275157C00047A850 /* Advance */; };
 		4BC4283B275158240047A850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC4283A275158240047A850 /* AppDelegate.swift */; };
@@ -35,6 +34,7 @@
 		4BC42850275158F80047A850 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC4284F275158F80047A850 /* RxCocoa */; };
 		4BC42852275158F80047A850 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42851275158F80047A850 /* RxRelay */; };
 		4BC42854275158F80047A850 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42853275158F80047A850 /* RxSwift */; };
+		C400406E29C1A0F1004A834D /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400406D29C1A0F1004A834D /* UIControl+Closure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,6 @@
 		4B98480527F31E8300ED3FA9 /* ScrollStickyVerticalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollStickyVerticalHeaderView.swift; sourceTree = "<group>"; };
 		4B98480A27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoVerticalStickyHeaderViewController.swift; sourceTree = "<group>"; };
 		4B9A4D0C29BDAFC70043C4B5 /* UIView+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
-		4BB7DA642807F141004A5992 /* UIControl+Closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIControl+Closure.swift"; path = "../../../muukii/FluidInterfaceKit/Sources/FluidInterfaceKit-Demo/UIControl+Closure.swift"; sourceTree = "<group>"; };
 		4BC42825275157080047A850 /* ScrollEdgeControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScrollEdgeControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC4282F275157320047A850 /* ScrollEdgeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollEdgeControl.swift; sourceTree = "<group>"; };
 		4BC42838275158240047A850 /* ScrollEdgeControl-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScrollEdgeControl-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +80,7 @@
 		4BC42843275158250047A850 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BC42846275158250047A850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BC42848275158250047A850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C400406D29C1A0F1004A834D /* UIControl+Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Closure.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +173,8 @@
 				4B39D0502752745C00D013F4 /* DemoHorizontalViewController.swift */,
 				4B39D0522752746600D013F4 /* DemoVerticalViewController.swift */,
 				4B98480A27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift */,
-				4BB7DA642807F141004A5992 /* UIControl+Closure.swift */,
 				4BC4283A275158240047A850 /* AppDelegate.swift */,
+				C400406D29C1A0F1004A834D /* UIControl+Closure.swift */,
 				4B5E52D427515C830075AE52 /* Book.swift */,
 				4B5E52D627515C900075AE52 /* BookContainerViewController.swift */,
 				4BC42843275158250047A850 /* Assets.xcassets */,
@@ -336,10 +336,10 @@
 				4B5E52D527515C830075AE52 /* Book.swift in Sources */,
 				4B39D0532752746600D013F4 /* DemoVerticalViewController.swift in Sources */,
 				4B39D05727528ACD00D013F4 /* Components.swift in Sources */,
+				C400406E29C1A0F1004A834D /* UIControl+Closure.swift in Sources */,
 				4B39D0512752745C00D013F4 /* DemoHorizontalViewController.swift in Sources */,
 				4B39D05527528A1900D013F4 /* DebuggingRefreshIndicatorView.swift in Sources */,
 				4B98480B27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift in Sources */,
-				4BB7DA652807F141004A5992 /* UIControl+Closure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
