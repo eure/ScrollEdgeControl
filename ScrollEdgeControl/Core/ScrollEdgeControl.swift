@@ -577,7 +577,15 @@ public final class ScrollEdgeControl: UIControl {
 
     }
 
-    func setFrame(_ frame: CGRect) {
+    func setFrame(_ frame: CGRect, scrollView: UIScrollView) {
+      
+      guard scrollView.bounds.contains(frame) else {
+        self.layer.isHidden = true
+        return
+      }
+      
+      self.layer.isHidden = false
+      
       setSize(frame.size)
       setPosition(point: frame.origin)
     }
@@ -628,7 +636,7 @@ public final class ScrollEdgeControl: UIControl {
         size: sizeForVertical
       )
 
-      setFrame(frame)
+      setFrame(frame, scrollView: scrollView)
 
     case .bottom:
 
@@ -641,7 +649,7 @@ public final class ScrollEdgeControl: UIControl {
         size: sizeForVertical
       )
 
-      setFrame(frame)
+      setFrame(frame, scrollView: scrollView)
 
     case .left:
 
@@ -653,7 +661,7 @@ public final class ScrollEdgeControl: UIControl {
         size: sizeForHorizontal
       )
 
-      setFrame(frame)
+      setFrame(frame, scrollView: scrollView)
 
     case .right:
 
@@ -666,7 +674,7 @@ public final class ScrollEdgeControl: UIControl {
         size: sizeForHorizontal
       )
 
-      setFrame(frame)
+      setFrame(frame, scrollView: scrollView)
 
     }
 
