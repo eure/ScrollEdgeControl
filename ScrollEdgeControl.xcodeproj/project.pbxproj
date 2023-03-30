@@ -34,6 +34,7 @@
 		4BC42850275158F80047A850 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC4284F275158F80047A850 /* RxCocoa */; };
 		4BC42852275158F80047A850 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42851275158F80047A850 /* RxRelay */; };
 		4BC42854275158F80047A850 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC42853275158F80047A850 /* RxSwift */; };
+		4BD5536329D5D51400A1EBF3 /* DemoUIRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5536229D5D51400A1EBF3 /* DemoUIRefreshViewController.swift */; };
 		C400406E29C1A0F1004A834D /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400406D29C1A0F1004A834D /* UIControl+Closure.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		4BC42843275158250047A850 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BC42846275158250047A850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BC42848275158250047A850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BD5536229D5D51400A1EBF3 /* DemoUIRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUIRefreshViewController.swift; sourceTree = "<group>"; };
 		C400406D29C1A0F1004A834D /* UIControl+Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Closure.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 				4BC42845275158250047A850 /* LaunchScreen.storyboard */,
 				4BC42848275158250047A850 /* Info.plist */,
 				4B39D05627528ACD00D013F4 /* Components.swift */,
+				4BD5536229D5D51400A1EBF3 /* DemoUIRefreshViewController.swift */,
 			);
 			path = "ScrollEdgeControl-Demo";
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				4B39D05727528ACD00D013F4 /* Components.swift in Sources */,
 				C400406E29C1A0F1004A834D /* UIControl+Closure.swift in Sources */,
 				4B39D0512752745C00D013F4 /* DemoHorizontalViewController.swift in Sources */,
+				4BD5536329D5D51400A1EBF3 /* DemoUIRefreshViewController.swift in Sources */,
 				4B39D05527528A1900D013F4 /* DebuggingRefreshIndicatorView.swift in Sources */,
 				4B98480B27F33CB000ED3FA9 /* DemoVerticalStickyHeaderViewController.swift in Sources */,
 			);
@@ -548,6 +552,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JX92XL88RZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ScrollEdgeControl-Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -575,6 +580,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JX92XL88RZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ScrollEdgeControl-Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

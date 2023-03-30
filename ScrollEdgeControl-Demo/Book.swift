@@ -71,4 +71,10 @@ let book = Book(title: "MyBook") {
     }
     
   }
+
+  BookNavigationLink(title: "UIRefreshControl") {
+    BookPush(title: "Vertical") {
+      DemoUIRefreshViewController()
+    }
+  }
 }
