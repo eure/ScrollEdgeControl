@@ -31,10 +31,10 @@ extension ScrollStickyContentType {
 public final class ScrollStickyVerticalHeaderView: UIView {
 
   public struct Configuration: Equatable {
-    
+
     public var scrollsTogether: Bool
     public var attachesToSafeArea: Bool
-    
+
     public init(scrollsTogether: Bool = true, attachesToSafeArea: Bool = false) {
       self.scrollsTogether = scrollsTogether
       self.attachesToSafeArea = attachesToSafeArea
@@ -51,21 +51,21 @@ public final class ScrollStickyVerticalHeaderView: UIView {
     var safeAreaInsets: UIEdgeInsets = .zero
     var contentOffset: CGPoint = .zero
     var isActive: Bool = true
-    
+
     var configuration: Configuration
   }
-  
+
   public var configuration: Configuration {
     get { componentState.configuration }
     set { componentState.configuration = newValue }
   }
-    
+
   public var isActive: Bool {
     componentState.isActive
   }
 
   private var isInAnimating = false
-  
+
   private var componentState: ComponentState {
     didSet {
       guard oldValue != componentState else {
@@ -85,17 +85,17 @@ public final class ScrollStickyVerticalHeaderView: UIView {
   }
 
   private var contentView: ScrollStickyContentType?
-  
+
   private var observations: [NSKeyValueObservation] = []
 
   private var contentInsetTopDynamicAnimator: Animator<CGFloat>?
-  
+
   private var topConstraint: NSLayoutConstraint?
 
   private weak var targetScrollView: UIScrollView? = nil
 
   public init(configuration: Configuration = .init()) {
-    
+
     self.componentState = .init(configuration: configuration)
     super.init(frame: .null)
   }
@@ -114,18 +114,17 @@ public final class ScrollStickyVerticalHeaderView: UIView {
     }
 
     addSubview(contentView)
-    contentView.translatesAutoresizingMaskIntoConstraints = false
-
-    NSLayoutConstraint.activate([
-      contentView.topAnchor.constraint(equalTo: topAnchor),
-      contentView.leftAnchor.constraint(equalTo: leftAnchor),
-      contentView.rightAnchor.constraint(equalTo: rightAnchor),
-      contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-    ])
-
     reloadState(animated: false)
 
     contentView.receive(state: contentState, oldState: nil)
+  }
+
+  public override func layoutSubviews() {
+    super.layoutSubviews()
+
+    // sync frame
+    // we don't use AutoLayout to prevent the content view from expanding inside.
+    contentView?.frame = bounds
   }
 
   public func setIsActive(_ isActive: Bool, animated: Bool) {
@@ -143,7 +142,7 @@ public final class ScrollStickyVerticalHeaderView: UIView {
   public override func didMoveToSuperview() {
 
     super.didMoveToSuperview()
-    
+
     // We cannot rely on the existence of self.superview to decide whether to setup scrollView,
     // because it did not exist yet on iOS 13.
     guard componentState.hasAttachedToScrollView == false else {
@@ -178,7 +177,7 @@ public final class ScrollStickyVerticalHeaderView: UIView {
     addObservation(scrollView: scrollView)
 
     self.translatesAutoresizingMaskIntoConstraints = false
-    
+
     NSLayoutConstraint.activate([
       leftAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leftAnchor),
       rightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.rightAnchor),
@@ -211,7 +210,7 @@ public final class ScrollStickyVerticalHeaderView: UIView {
         else {
           return
         }
-          
+
         self.componentState.contentOffset = scrollView.contentOffset
         self.contentState.contentOffset = scrollView.contentOffset
       },
@@ -259,9 +258,9 @@ public final class ScrollStickyVerticalHeaderView: UIView {
     if state.isActive != oldState?.isActive {
       contentState.isActive = state.isActive
     }
-    
+
     if let targetScrollView = targetScrollView, state.configuration.attachesToSafeArea != oldState?.configuration.attachesToSafeArea {
-      
+
       if state.configuration.attachesToSafeArea {
         topConstraint?.isActive = false
         topConstraint = topAnchor.constraint(equalTo: targetScrollView.safeAreaLayoutGuide.topAnchor)
@@ -271,13 +270,13 @@ public final class ScrollStickyVerticalHeaderView: UIView {
         topConstraint = topAnchor.constraint(equalTo: targetScrollView.frameLayoutGuide.topAnchor)
         topConstraint?.isActive = true
       }
-      
+
       layoutIfNeeded()
-      
+
     }
-    
+
     if let targetScrollView = targetScrollView,
-      let contentView = contentView,
+       let contentView = contentView,
        state.safeAreaInsets != oldState?.safeAreaInsets || state.isActive != oldState?.isActive || state.configuration != oldState?.configuration
     {
 
@@ -285,7 +284,7 @@ public final class ScrollStickyVerticalHeaderView: UIView {
         if state.isActive {
 
           let size = calculateFittingSize(view: contentView)
-          
+
           if state.configuration.attachesToSafeArea {
             let targetValue = size.height
             return targetValue
@@ -338,13 +337,14 @@ public final class ScrollStickyVerticalHeaderView: UIView {
 
       }
     }
-    
+
     if let topConstraint = topConstraint, state.contentOffset != oldState?.contentOffset || state.configuration != oldState?.configuration {
       if self.configuration.scrollsTogether {
         topConstraint.constant = min(0, -(state.contentOffset.y + (targetScrollView?.adjustedContentInset.top ?? 0)))
       }
+
     }
-    
+
   }
 
   private func calculateFittingSize(view: UIView) -> CGSize {
